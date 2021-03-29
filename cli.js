@@ -7,7 +7,7 @@ if(!configFile){
     console.log(chalk.red('Config file not found. Create a config.js file in root of project.'));
     process.exit();
 }
-const environment = process.NODE_ENV || 'development';
+const environment = process.env.NODE_ENV || 'development';
 const config = configFile[environment];
 if(!config){
     console.log(chalk.red(`Config file found but environment not found for: ${environment}.`));
