@@ -12,7 +12,7 @@ yarn global add squido
 
 ## Structure
 
-You can start by grabbing everything in the `/source` directory of [here](https://github.com/mrvautin/squido/source).
+You can start by grabbing everything in the `/source` directory of [here](https://github.com/mrvautin/squido/tree/main/source).
 
 ```
 project
@@ -21,6 +21,7 @@ project
 └───source
 │   index.hbs
 │   post.hbs
+│   package.json
 │   │
 │   └───posts
 │   │   post1.markdown
