@@ -12,6 +12,19 @@
     "serve": "node cli.js serve -w -b",
     "lint": "eslint ./"
   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mrvautin/squido.git"
+  },
+  "keywords": [
+    "static",
+    "builder",
+    "website",
+    "blog",
+    "fast",
+    "squido"
+  ],
+  "readmeFilename": "README.md",
   "author": "@mrvautin",
   "license": "MIT",
   "dependencies": {
