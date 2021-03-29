@@ -166,4 +166,6 @@ The permalink is required. Its used to build the URL for your website: Eg. The a
 
 You can host this website anywhere you can host static websites. Some options are [https://www.netlify.com](https://www.netlify.com) as the deployments are just dead simple.
 
+Simply set the `Build settings` settings like below:
+
 <img src="docs\images\netlify.png" width="800px" height="auto">
