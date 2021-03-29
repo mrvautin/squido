@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 const chalk = require('chalk');
+const path = require('path');
 
 // Setup config
-const configFile = require('./config');
+const configFile = require(path.join(process.cwd(), 'config.js'));
 if(!configFile){
     console.log(chalk.red('Config file not found. Create a config.js file in root of project.'));
     process.exit();
@@ -19,7 +20,6 @@ process.config = config;
 // Modules
 const { Command } = require('commander');
 const chokidar = require('chokidar');
-const path = require('path');
 const serve = require('./lib/serve');
 const { clean, buildIndex, buildFile, buildPost, copyFile, copyContent, removeFile } = require('./lib/build');
 const { readPosts, compilePosts } = require('./lib/source');
@@ -122,6 +122,7 @@ program
     });
 
 const runBuild = async () => {
+    console.log(chalk.yellow(`[Building environment: ${environment}]`));
     const sourceFiles = await readPosts();
     await compilePosts(sourceFiles);
     await buildIndex();
