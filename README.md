@@ -1,4 +1,4 @@
-<img src="docs\images\squido.png" width="100px" height="auto">
+<img src="https://raw.githubusercontent.com/mrvautin/squido/main/docs/images/squido.png" width="100px" height="auto">
 
 # squido
 
@@ -168,4 +168,4 @@ You can host this website anywhere you can host static websites. Some options ar
 
 Simply set the `Build settings` settings like below:
 
-<img src="docs\images\netlify.png" width="800px" height="auto">
+<img src="https://raw.githubusercontent.com/mrvautin/squido/main/docs/images/squido.png" width="800px" height="auto">
