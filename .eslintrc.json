@@ -1,0 +1,52 @@
+{
+    "extends": "standard",
+    "plugins": [
+        "standard",
+        "promise",
+        "extra-rules"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 2018
+    },
+    "globals": {
+        "$": true
+    },
+    "env": {
+        "browser": true,
+        "node": true
+    },
+    "rules": {
+        "quotes": ["error", "single"],
+        "prefer-arrow-callback": [ "error", { "allowNamedFunctions": true } ],
+        "consistent-return": 2,
+        "no-var"           : 2,
+        "new-cap"          : 0,
+        "indent"           : 0,
+        "no-else-return"   : 1,
+        "semi"             : [1, "always"],
+        "space-unary-ops"  : 2,
+        "no-undef": 1,
+        "no-unused-vars": 1,
+        "extra-rules/no-commented-out-code": "warn",
+        "keyword-spacing": [
+            "error", { 
+                "before": false, "after": false, "overrides": {
+                "const": { 
+                    "after": true
+                },
+                "return": { 
+                    "after": true
+                },
+                "case": { 
+                    "after": true
+                }
+            }
+        }],
+        "prefer-template": 1,
+        "space-before-function-paren": 0,
+        "space-before-blocks": ["error", "never"],
+        "camelcase": 0,
+        "handle-callback-err": ["error", "none"],
+        "object-curly-spacing": ["error", "always"]
+    }
+}

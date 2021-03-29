@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{{meta.title}}</title>
+    <meta name="description" itemprop="description" content="{{meta.description}}" />
+    <link rel="canonical" href="{{meta.url}}" />
+    <meta property="og:title" content="{{meta.title}}" />
+    <meta property="og:description" content="{{meta.description}}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="{{meta.url}}" />
+    <meta property="og:site_name" content="{{meta.config.name}}" />
+    <meta name="twitter:card" value="summary" />
+    <meta name="twitter:url" value="{{meta.url}}" />
+    <meta name="twitter:title" value="{{meta.title}}" />
+    <meta name="twitter:description" value="{{meta.description}}" />
+    {{#if meta.image}}
+    <meta name="twitter:image" value="<{{meta.image}}" />
+    {{/if}}
+    {{#if meta.config.twitterHandle}}
+    <meta name="twitter:site" value="{{meta.config.twitterHandle}}" />
+    {{/if}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta2/css/bootstrap.min.css" integrity="sha512-aqT9YD5gLuLBr6ipQAS+72o5yHKzgZbGxEh6iY8lW/r6gG14e2kBTAJb8XrxzZrMOgSmDqtLaF76T0Z6YY2IHg==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/content/stylesheets/style{{config.env}}.css">
+    <script src="/content/javascripts/site.js"></script>
+  </head>
+  <body>
+    <header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+        <p class="h5 my-0 me-md-auto brand"><a href="/">mrvautin</a></p>
+        <nav class="my-2 my-md-0 me-md-3">
+            <a class="p-2 text-dark" href="/">Home</a>
+        </nav>
+    </header>
+    <main class="container">
+      {{{body}}}
+    </main>
+    <footer class="footer mt-5 py-3 bg-light">
+        <div class="container text-center">
+            <span class="text-muted">mrvautin</span>
+        </div>
+    </footer>
+  </body>
+</html>
