@@ -1,6 +1,8 @@
+<img src="docs\images\squido.png" width="100px" height="auto">
+
 # squido
 
-`squido` is a dead simple static website builder which can be be hosted anywhere for super fast websites and very little effort
+`squido` is a dead simple static website builder which can be hosted anywhere for super fast websites and very little effort.
 
 ```bash
 # with npm
@@ -9,6 +11,10 @@ npm install -g squido
 # or with Yarn
 yarn global add squido
 ```
+
+## Demo
+
+A demo can be found [https://squido.netlify.app](https://squido.netlify.app)
 
 ## Structure
 
@@ -117,8 +123,6 @@ const config = {
         description: 'This is the blog description',
         twitterHandle: '@mrvautin',
         baseUrl: 'http://localhost:4965',
-        layout: 'layout.hbs',
-        sourceDir: 'posts/',
         sourcesExt: 'markdown',
         summaryLength: 250,
         port: 4965
@@ -128,8 +132,6 @@ const config = {
         description: 'This is the blog description',
         twitterHandle: '@mrvautin',
         baseUrl: 'http://example.com',
-        layout: 'layout.hbs',
-        sourceDir: 'posts/',
         sourcesExt: 'markdown',
         summaryLength: 250,
         port: 4965
@@ -159,3 +161,9 @@ date: '2021-03-11 19:17:00'
 You can add more but the example layouts uses the `title` and `description` for SEO for page title. 
 
 The permalink is required. Its used to build the URL for your website: Eg. The above will output a post at: `https://example.com/caede-virides-oculos-armentis`
+
+## Deployment / Hosting
+
+You can host this website anywhere you can host static websites. Some options are [https://www.netlify.com](https://www.netlify.com) as the deployments are just dead simple.
+
+<img src="docs\images\netlify.png" width="800px" height="auto">
