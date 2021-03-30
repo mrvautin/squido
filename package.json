@@ -40,6 +40,7 @@
     "lodash": "^4.17.21",
     "markdown-it": "^12.0.4",
     "md5": "^2.3.0",
+    "sitemap": "^6.4.0",
     "string-strip-html": "^8.2.7"
   },
   "devDependencies": {
