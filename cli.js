@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const chalk = require('chalk');
 const path = require('path');
+const fs = require('fs');
 
 // Setup config
 const configFile = require(path.join(process.cwd(), 'config.js'));
@@ -21,7 +22,16 @@ process.config = config;
 const { Command } = require('commander');
 const chokidar = require('chokidar');
 const serve = require('./lib/serve');
-const { clean, buildIndex, buildFile, buildPost, copyFile, copyContent, removeFile } = require('./lib/build');
+const {
+    clean,
+    buildIndex,
+    buildFile,
+    buildPost,
+    copyFile,
+    copyContent,
+    removeFile,
+    buildPagination
+} = require('./lib/build');
 const { readPosts, compilePosts } = require('./lib/source');
 
 // Setup CLI
@@ -125,8 +135,16 @@ const runBuild = async () => {
     console.log(chalk.yellow(`[Building environment: ${environment}]`));
     const sourceFiles = await readPosts();
     await compilePosts(sourceFiles);
+    // If Pagination turned on
+    if(config.pagination){
+        await buildPagination();
+    }
     await buildIndex();
-    await buildFile();
+
+    // Write default build script if one doesn't exist
+    if(!fs.existsSync(path.join(process.cwd(), 'source', 'package.json'))){
+        await buildFile();
+    }
     await copyContent();
 };
 

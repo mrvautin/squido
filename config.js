@@ -6,7 +6,9 @@ const config = {
         baseUrl: 'http://localhost:4965',
         sourcesExt: 'markdown',
         summaryLength: 250,
-        port: 4965
+        port: 4965,
+        pagination: true,
+        postPerPage: 8
     },
     production: {
         name: 'squido',
@@ -15,7 +17,9 @@ const config = {
         baseUrl: 'http://example.com',
         sourcesExt: 'markdown',
         summaryLength: 250,
-        port: 4965
+        port: 4965,
+        pagination: true,
+        postPerPage: 8
     }
 };
 
