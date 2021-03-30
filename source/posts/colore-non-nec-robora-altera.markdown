@@ -3,6 +3,10 @@ title: Colore non nec robora altera
 permalink: colore-non-nec-robora-altera
 description: Colore non nec robora altera
 date: '2021-01-14 03:17:00'
+tags: 
+  - fortuna
+  - robora
+  - altera
 ---
 
 ## Dicunt indignos ferit quod

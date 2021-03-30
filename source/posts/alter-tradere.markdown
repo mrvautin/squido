@@ -4,6 +4,9 @@ title: Alter tradere
 permalink: alter-tradere
 description: Alter tradere
 date: '2021-03-11 19:17:00'
+tags: 
+  - alter
+  - tradere
 ---
 
 ## Umbram cum est stagna

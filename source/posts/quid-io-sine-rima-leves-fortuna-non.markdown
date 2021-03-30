@@ -1,9 +1,11 @@
 ---
-layout: post
 title: Quid Io sine rima leves fortuna non
 permalink: quid-io-sine-rima-leves-fortuna-non
 description: Quid Io sine rima leves fortuna non
 date: '2021-01-08 06:21:44'
+tags: 
+  - fortuna
+  - leves
 ---
 
 ## Responde ingratos a interit peragit

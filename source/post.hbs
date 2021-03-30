@@ -6,3 +6,13 @@
         </div>
     </div>
 </div>
+{{#if tags}}
+<div class="row">
+    <div class="col-md-8 offset-md-2 mb-5">
+        <h5 class="text-muted">Tags:</h5>
+        {{#each tags}}
+        <a href="/tag/{{this}}">{{this}}</a> |
+        {{/each}}
+    </div>
+</div>
+{{/if}}

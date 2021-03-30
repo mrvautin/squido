@@ -31,6 +31,7 @@ const {
     copyContent,
     removeFile,
     buildPagination,
+    buildTags,
     sitemap,
     rssfeed
 } = require('./lib/build');
@@ -145,6 +146,7 @@ const runBuild = async () => {
         await buildPagination();
     }
     await buildIndex();
+    await buildTags();
 
     // Write default build script if one doesn't exist
     if(!fs.existsSync(path.join(process.cwd(), 'source', 'package.json'))){

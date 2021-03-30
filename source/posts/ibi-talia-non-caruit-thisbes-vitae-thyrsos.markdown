@@ -3,6 +3,9 @@ title: Ibi talia non caruit Thisbes vitae thyrsos
 permalink: ibi-talia-non-caruit-thisbes-vitae-thyrsos
 description: Ibi talia non caruit Thisbes vitae thyrsos
 date: '2021-03-18 10:30:00'
+tags: 
+  - thyrsos
+  - caruit
 ---
 
 ## Saepe tempus limen
