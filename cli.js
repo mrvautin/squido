@@ -105,9 +105,12 @@ program
                 }
 
                 // If index, build index
-                if(path.basename(file) === 'index.hbs'){
-                    await buildIndex();
-                    return;
+                if(path.extname(file) === '.hbs'){
+                    if(path.basename(file) === 'index.hbs'){
+                        await buildIndex();
+                        return;
+                    }
+                    await runBuild();
                 }
 
                 // All other files
