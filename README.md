@@ -27,6 +27,8 @@ project
 └───source
 │   index.hbs
 │   post.hbs
+│   page.hbs
+│   tag.hbs
 │   package.json
 │   │
 │   └───posts
@@ -46,7 +48,7 @@ project
 
 The `/source` directory is required
 
-The `index.hbs` and `post.hbs` files are used to insert into your template. The index is the root of your website and the `post.hbs` will render the contents of the `.markdown` files.
+The `index.hbs`, `post.hbs`, `page.hbs` and `tag.hbs` files are used to insert into your template. The `index.hbs` is the root of your website, `post.hbs` will render the contents of the `.markdown` files and `page.hbs` and `tag.hbs` are used to build pagination and tag aggregation.
 
 Your posts go in the `/source/posts` directory. You will have `.markdown` files for each post/page you want.
 
