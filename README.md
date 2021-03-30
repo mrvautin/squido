@@ -4,6 +4,8 @@
 
 `squido` is a dead simple static website builder which can be hosted anywhere for super fast websites and very little effort.
 
+`squido` has baked in everything you need to run and host a website. You simply do the writing and customisation of style and layout. 
+
 ```bash
 # with npm
 npm install -g squido
