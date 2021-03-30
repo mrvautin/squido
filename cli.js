@@ -31,7 +31,8 @@ const {
     copyContent,
     removeFile,
     buildPagination,
-    sitemap
+    sitemap,
+    rssfeed
 } = require('./lib/build');
 const { readPosts, compilePosts } = require('./lib/source');
 
@@ -151,6 +152,7 @@ const runBuild = async () => {
     }
     await copyContent();
     await sitemap();
+    await rssfeed();
 };
 
 program.parse(process.argv);

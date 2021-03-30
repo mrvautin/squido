@@ -166,6 +166,16 @@ You can add more but the example layouts uses the `title` and `description` for 
 
 The permalink is required. Its used to build the URL for your website: Eg. The above will output a post at: `https://example.com/caede-virides-oculos-armentis`
 
+## Sitemap / RSS
+
+A website sitemap is automatically built and can be found at `/sitemap.xml`. Eg: `example.com/sitemap.xml`
+
+RSS/Atom/JSON feeds are automatically built and can be found at:
+
+- `/rss`. Eg: `example.com/rss`
+- `/atom`. Eg: `example.com/atom`
+- `/json`. Eg: `example.com/json`
+
 ## Deployment / Hosting
 
 You can host this website anywhere you can host static websites. Some options are [https://www.netlify.com](https://www.netlify.com) as the deployments are just dead simple.

@@ -32,6 +32,7 @@
     "chokidar": "^3.5.1",
     "commander": "^2.6.0",
     "express": "^4.17.1",
+    "feed": "^4.2.2",
     "fs-extra": "^9.1.0",
     "glob": "^7.1.6",
     "glob-promise": "^4.1.0",
