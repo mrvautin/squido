@@ -3,19 +3,38 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {{#if meta.title}}
     <title>{{meta.title}}</title>
+    <meta property="og:title" content="{{meta.title}}" />
+    <meta name="twitter:title" value="{{meta.title}}" />
     <meta name="description" itemprop="description" content="{{meta.description}}" />
+    <meta property="og:description" content="{{meta.description}}" />
+    <meta name="twitter:description" value="{{meta.description}}" />
+    {{else}}
+    {{#if page}}
+    <title>{{meta.config.name}} - Page: {{page}}</title>
+    <meta property="og:title" content="{{meta.config.name}} - Page: {{page}}" />
+    <meta name="twitter:title" value="{{meta.config.name}} - Page: {{page}}" />
+    <meta name="description" itemprop="description" content="{{meta.config.name}} - Page: {{page}}" />
+    <meta property="og:description" content="{{meta.config.name}} - Page: {{page}}" />
+    <meta name="twitter:description" value="{{meta.config.name}} - Page: {{page}}" />
+    {{/if}}
+    {{#if tag}}
+    <title>{{meta.config.name}} - Tag: {{tag}}</title>
+    <meta property="og:title" content="{{meta.config.name}} - Tag: {{tag}}" />
+    <meta name="twitter:title" value="{{meta.config.name}} - Tag: {{tag}}" />
+    <meta name="description" itemprop="description" content="{{meta.config.name}} - Posts containing tag: {{tag}}" />
+    <meta property="og:description" content="{{meta.config.name}} - Posts containing tag: {{tag}}" />
+    <meta name="twitter:description" value="{{meta.config.name}} - Posts containing tag: {{tag}}" />
+    {{/if}}
+    {{/if}}
     <link rel="canonical" href="{{meta.url}}" />
     <link rel="icon" type="image/png" href="/content/images/favicon.png" />
-    <meta property="og:title" content="{{meta.title}}" />
-    <meta property="og:description" content="{{meta.description}}" />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="{{meta.url}}" />
     <meta property="og:site_name" content="{{meta.config.name}}" />
     <meta name="twitter:card" value="summary" />
     <meta name="twitter:url" value="{{meta.url}}" />
-    <meta name="twitter:title" value="{{meta.title}}" />
-    <meta name="twitter:description" value="{{meta.description}}" />
     {{#if meta.image}}
     <meta name="twitter:image" value="<{{meta.image}}" />
     {{/if}}
