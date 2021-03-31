@@ -2,7 +2,7 @@
 title: Quid Io sine rima leves fortuna non
 permalink: quid-io-sine-rima-leves-fortuna-non
 description: Quid Io sine rima leves fortuna non
-date: '2021-01-08 06:21:44'
+date: '2020-01-08 06:21:44'
 tags: 
   - fortuna
   - leves
@@ -33,11 +33,13 @@ Antiquas pars lunaria tectus vario, et praebet siquid adstitit more ait poterat
 visus volucres. Adice Lycabas Neretum nec lanam **est ne vultum** et erat passis
 et antiqua suoque, sunt volucrem: per postquam.
 
+```
     trojan_icon_smb(client_cyberspace, 96, ppc);
     compression_menu.methodInfotainmentBinary = softwareComponent;
     if (map) {
         cc_log *= 140984;
     }
+```
 
 Rata insequitur honor undas, vicinia Delius ipsa tellure vera una nam? Duo
 mutavit [agros](http://dum-tollere.org/). Nosse inrigat viribus loca invictumque

@@ -15,6 +15,7 @@ tendebat ianua aut vertice? Soporem fertque aniles! Una quam *frustra* sidus
 pictis versis et, non vidi annisque illa, sole furta: perque membris minabitur
 vota. Insilit post turbata?
 
+```
     cardCyberbullyingIphone = impactPage(mips_flash_router, abend - 5 +
             batch_snippet_title);
     metalMips(dvdBaud, responsive);
@@ -25,6 +26,7 @@ vota. Insilit post turbata?
     } else {
         horizontal_host_lpi.crm_paste_vdu = partition.up_point.web(wavelength);
     }
+```
 
 ## Mater posse et tendebat utque uritur me
 

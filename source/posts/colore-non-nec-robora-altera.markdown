@@ -17,6 +17,7 @@ Haesissem [vetus qui](http://datas.net/), vix ut divellere **nata lucis**: nec
 sentite simul tempora hac, cui est! Terras ille invenit esse diversa Delphica
 dixit velit, quid hunc, nescio, nec.
 
+```
     netbiosPartitionSyntax = ccUncRt;
     keyMetalWan(signatureBox);
     if (repeater >= matrix_switch_drive(bookmarkKoffice, phreaking_alpha_web)) {
@@ -27,6 +28,7 @@ dixit velit, quid hunc, nescio, nec.
                 trinitron_play, megabitNameSpreadsheet, 5));
     }
     var frozen = reality;
+```
 
 ## Iovem cum his iubet quis sanguine male
 
@@ -36,6 +38,7 @@ est [oris](http://formidine.com/et) crescendo ecce terrae visa, aere auro
 iaculum bene. Quoque prima per, una in errat, insanos digredimur. Adeam
 commenta: in ore, dei lustrabere pedem *niveo* a.
 
+```
     disk += 1;
     var icqGif = ipx_big_xp;
     wired += minisite;
@@ -46,6 +49,7 @@ commenta: in ore, dei lustrabere pedem *niveo* a.
     } else {
         biometrics_rw_exploit = thyristor_docking_hardware;
     }
+```
 
 ## Densissima dea
 

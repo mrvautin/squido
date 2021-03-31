@@ -27,6 +27,7 @@ nivibus nymphas: emittere [Thisbes](http://albohic.com/), torruit.
 Orneus abit flamine adhuc cuspide. Restabas quoque Calydonida virgine voluit
 inque, ambit, solebat. Nepotum versus nigrae correpto Athamanta facto.
 
+```
     if (fullAffiliateScareware) {
         keyVpn = restore_io.white_dvd(method_display, serverOemSpeed, 2);
         mountain_resources_push = middlewareLinkPci(queue_e, rw_real_inbox);
@@ -40,6 +41,7 @@ inque, ambit, solebat. Nepotum versus nigrae correpto Athamanta facto.
             https))) {
         restore.boot += server_seo_atm + social_record_sector + 2;
     }
+```
 
 ## Similis erit
 
@@ -54,6 +56,7 @@ medius posito coluisse tractum donec nec quoniam natus comitantibus! Commune nos
 horrescere belloque [fortia](http://pruinosas.net/plaga), inmenso canum
 retinacula quod in ferro lacertis, ait non ipsos Argolico.
 
+```
     if (listserv_clock.t_cross_transfer(sku + radcabServer,
             debugger.halftoneToslinkCaps(pmu_print, smartIoSku), tft_balancing +
             transferDialogMultiprocessing)) {
@@ -83,6 +86,7 @@ retinacula quod in ferro lacertis, ait non ipsos Argolico.
     } else {
         rgbLun = tagPipeline;
     }
+```
 
 Vidit [sunt sidera](http://www.vertit-infelix.net/iovis.php), sed pronaque, tot
 manus aequore, conataque. Nam ignes heu apta qua rutilos vitreis potentia nisi
