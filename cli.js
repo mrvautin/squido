@@ -31,10 +31,12 @@ const {
     copyContent,
     removeFile,
     buildPagination,
-    buildTags,
+    buildTags
+} = require('./lib/build');
+const {
     sitemap,
     rssfeed
-} = require('./lib/build');
+} = require('./lib/feeds');
 const { readPosts, compilePosts } = require('./lib/source');
 
 // Setup CLI

@@ -163,6 +163,8 @@ title: Caede virides oculos armentis
 permalink: caede-virides-oculos-armentis
 description: Caede virides oculos armentis
 date: '2021-03-11 19:17:00'
+ignore: true
+hidden: false
 tags: 
   - alter
   - tradere
@@ -172,6 +174,11 @@ tags:
 You can add more but the example layouts uses the `title` and `description` for SEO for page title. 
 
 The permalink is required. Its used to build the URL for your website: Eg. The above will output a post at: `https://example.com/caede-virides-oculos-armentis`
+
+The `ignore` and `hidden` are optional tags for controlling the visibility of posts.
+
+- `ignore`: If set to `true`, the post will not be in the pagination and won't show on the index page.
+- `hidden`: If set to `true`, the post will not be in the sitemap and RSS feeds.
 
 ## Sitemap / RSS
 
