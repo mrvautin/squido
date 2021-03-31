@@ -9,12 +9,12 @@ body{
 }
 
 a{
-    color: #e76f51 !important;
+    color: #F95A77 !important;
     text-decoration: none !important;
 }
 
 a:hover{
-    color: #db5d3e !important;
+    color: #FF96A9 !important;
     text-decoration: underline !important;
 }
 
@@ -24,14 +24,14 @@ a:hover{
 
 .btn-outline-secondary {
     color: #ffffff !important;
-    background-color: #f4a261 !important;
-    border-color: #f4a261 !important;
+    background-color: #F95A77 !important;
+    border-color: #F95A77 !important;
 }
 
 .btn-outline-secondary:hover {
     color: #ffffff !important;
-    background-color: #e78f47 !important;
-    border-color: #e78f47 !important;
+    background-color: #FF96A9 !important;
+    border-color: #FF96A9 !important;
 }
 
 .jumbo-title {
