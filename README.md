@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/mrvautin/squido/main/docs/images/squido.svg" width="100px" height="100px">
+<img src="https://raw.githubusercontent.com/mrvautin/squido/main/docs/images/squido.svg" width="200px" height="200px">
 
 # squido
 
