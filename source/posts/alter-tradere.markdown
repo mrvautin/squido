@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Alter tradere
 permalink: alter-tradere
 description: Alter tradere
