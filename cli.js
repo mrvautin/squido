@@ -29,6 +29,7 @@ const {
     rssfeed
 } = require('./lib/feeds');
 const { readPosts, compilePosts } = require('./lib/source');
+const { minifyJs, minifyCss } = require('./lib/minify');
 
 // Setup CLI
 const program = new Command();
@@ -146,6 +147,8 @@ const runBuild = async () => {
         await buildFile();
     }
     await copyContent();
+    await minifyJs();
+    await minifyCss();
     await sitemap();
     await rssfeed();
     console.log(chalk.green('[Build complete]'));

@@ -45,8 +45,8 @@
     <link rel="alternate" type="application/atom+xml" href="{{meta.config.baseUrl}}/atom" />
     <link rel="alternate" type="application/json" href="{{meta.config.baseUrl}}/json" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta2/css/bootstrap.min.css" integrity="sha512-aqT9YD5gLuLBr6ipQAS+72o5yHKzgZbGxEh6iY8lW/r6gG14e2kBTAJb8XrxzZrMOgSmDqtLaF76T0Z6YY2IHg==" crossorigin="anonymous" />
-    <link rel="stylesheet" href="/content/stylesheets/style{{config.env}}.css">
-    <script src="/content/javascripts/site.js"></script>
+    <link rel="stylesheet" href="/content/stylesheets/style{{meta.config.fileEnv}}.css">
+    <script src="/content/javascripts/site{{meta.config.fileEnv}}.js"></script>
   </head>
   <body>
     <header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
