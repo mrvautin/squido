@@ -75,7 +75,7 @@ program
 
         // If watch flag
         if(options && options.watch){
-            const watcher = chokidar.watch('./source', {
+            const watcher = chokidar.watch(config.sourceDir, {
                 ignored: /(^|[/\\])\../,
                 persistent: true,
                 ignoreInitial: true
