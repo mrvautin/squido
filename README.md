@@ -192,8 +192,8 @@ RSS/Atom/JSON feeds are automatically built and can be found at:
 
 ## Deployment / Hosting
 
-You can host this website anywhere you can host static websites. Some options are [https://www.netlify.com](https://www.netlify.com) as the deployments are just dead simple.
+You can host this website anywhere static websites are supported. Some options are [https://www.netlify.com](https://www.netlify.com) as the deployments are just dead simple.
 
-Simply set the `Build settings` settings like below:
+Simply connect your Git repo and set the `Build settings` settings like below:
 
 <img src="https://raw.githubusercontent.com/mrvautin/squido/main/docs/images/netlify.png" width="800px" height="auto">
