@@ -2,13 +2,10 @@ const {
     serial: test
 } = require('ava');
 const path = require('path');
+const glob = require('glob-promise');
+const { getMeta } = require('../../lib/common');
 const h = require('../helper');
-
-test('Run build command', async t => {
-    const cmd = await h.exec('squido build');
-
-    t.deepEqual(cmd.includes('[Build complete]'), true);
-});
+const config = process.config;
 
 test('Run build command', async t => {
     const cmd = await h.exec('squido build');
@@ -35,4 +32,20 @@ test('Run build - check output', async t => {
     t.deepEqual(await h.exists(path.join(h.buildPath, 'json')), true);
     t.deepEqual(await h.exists(path.join(h.buildPath, 'rss')), true);
     t.deepEqual(await h.exists(path.join(h.buildPath, 'atom')), true);
+});
+
+test('Run build - check for a post', async t => {
+    // Run build and clean
+    await h.exec('squido build -c');
+
+    // Get posts
+    const posts = await glob(`${h.postPath}/*.${config.sourcesExt || 'markdown'}`);
+
+    // Get random post index
+    const postIndex = Math.floor(Math.random() * posts.length - 1);
+
+    // Get the post meta
+    const postMeta = getMeta(posts[postIndex]);
+
+    t.deepEqual(await h.exists(path.join(h.buildPath, postMeta.permalink, 'index.html')), true);
 });

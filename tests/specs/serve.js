@@ -31,3 +31,30 @@ test('Check sitemap', async t => {
     .get('/sitemap.xml');
     t.is(response.status, 200);
 });
+
+test('Check json feed', async t => {
+    // Run build and clean
+    await h.exec('squido build -c');
+
+    const response = await request(app)
+    .get('/json');
+    t.is(response.status, 200);
+});
+
+test('Check atom feed', async t => {
+    // Run build and clean
+    await h.exec('squido build -c');
+
+    const response = await request(app)
+    .get('/atom');
+    t.is(response.status, 200);
+});
+
+test('Check rss feed', async t => {
+    // Run build and clean
+    await h.exec('squido build -c');
+
+    const response = await request(app)
+    .get('/rss');
+    t.is(response.status, 200);
+});
