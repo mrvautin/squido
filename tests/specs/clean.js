@@ -1,7 +1,7 @@
 const {
     serial: test
 } = require('ava');
-const glob = require('glob-promise');
+const glob = require('globby');
 const h = require('../helper');
 
 test('Run clean command', async t => {

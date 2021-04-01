@@ -2,7 +2,7 @@ const {
     serial: test
 } = require('ava');
 const path = require('path');
-const glob = require('glob-promise');
+const glob = require('globby');
 const { getMeta } = require('../../lib/common');
 const h = require('../helper');
 const config = process.config;
