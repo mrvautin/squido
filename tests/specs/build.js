@@ -42,7 +42,7 @@ test('Run build - check for a post', async t => {
     const posts = await glob(`${h.postPath}/*.${config.sourcesExt || 'markdown'}`);
 
     // Get random post index
-    const postIndex = Math.floor(Math.random() * posts.length - 1);
+    const postIndex = Math.ceil(Math.random() * posts.length - 1);
 
     // Get the post meta
     const postMeta = getMeta(posts[postIndex]);
