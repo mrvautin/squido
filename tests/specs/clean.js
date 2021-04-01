@@ -5,7 +5,7 @@ const glob = require('glob-promise');
 const h = require('../helper');
 
 test('Run clean command', async t => {
-    const cmd = await h.exec('squido build -c');
+    const cmd = await h.exec(`${h.rootPath}/cli.js build -c`);
 
     const cleanString = `Cleaned: ${h.buildPath}`;
 
@@ -14,7 +14,7 @@ test('Run clean command', async t => {
 
 test('Run clean - check build dir is empty', async t => {
     // Run build and clean
-    await h.exec('squido clean');
+    await h.exec(`${h.rootPath}/cli.js clean`);
 
     const buildFiles = await glob(`${h.buildPath}/*/**`);
 

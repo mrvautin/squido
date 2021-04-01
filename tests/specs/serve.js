@@ -7,7 +7,7 @@ const app = require('../../lib/serve').start();
 
 test('Run serve - Check index', async t => {
     // Run build and clean
-    await h.exec('squido build -c');
+    await h.exec(`${h.rootPath}/cli.js build -c`);
 
     const response = await request(app)
     .get('/');
@@ -16,7 +16,7 @@ test('Run serve - Check index', async t => {
 
 test('Run serve - Check 404', async t => {
     // Run build and clean
-    await h.exec('squido build -c');
+    await h.exec(`${h.rootPath}/cli.js build -c`);
 
     const response = await request(app)
     .get('/gdgfgdf');
@@ -25,7 +25,7 @@ test('Run serve - Check 404', async t => {
 
 test('Check sitemap', async t => {
     // Run build and clean
-    await h.exec('squido build -c');
+    await h.exec(`${h.rootPath}/cli.js build -c`);
 
     const response = await request(app)
     .get('/sitemap.xml');
@@ -34,7 +34,7 @@ test('Check sitemap', async t => {
 
 test('Check json feed', async t => {
     // Run build and clean
-    await h.exec('squido build -c');
+    await h.exec(`${h.rootPath}/cli.js build -c`);
 
     const response = await request(app)
     .get('/json');
@@ -43,7 +43,7 @@ test('Check json feed', async t => {
 
 test('Check atom feed', async t => {
     // Run build and clean
-    await h.exec('squido build -c');
+    await h.exec(`${h.rootPath}/cli.js build -c`);
 
     const response = await request(app)
     .get('/atom');
@@ -52,7 +52,7 @@ test('Check atom feed', async t => {
 
 test('Check rss feed', async t => {
     // Run build and clean
-    await h.exec('squido build -c');
+    await h.exec(`${h.rootPath}/cli.js build -c`);
 
     const response = await request(app)
     .get('/rss');
