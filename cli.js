@@ -2,19 +2,10 @@
 const chalk = require('chalk');
 const path = require('path');
 const fs = require('fs');
-
-// Setup config
-const configFile = require(path.join(process.cwd(), 'config.js'));
-if(!configFile){
-    console.log(chalk.red('Config file not found. Create a config.js file in root of project.'));
-    process.exit();
-}
+const { getConfig } = require('./lib/common');
 const environment = process.env.NODE_ENV || 'development';
-const config = configFile[environment];
-if(!config){
-    console.log(chalk.red(`Config file found but environment not found for: ${environment}.`));
-    process.exit();
-}
+const config = getConfig(environment);
+
 // Set for use later
 process.config = config;
 
