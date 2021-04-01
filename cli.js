@@ -60,7 +60,7 @@ program
 program
     .command('clean')
     .description('Clean your website build')
-    .action(async(options) => {
+    .action(async() => {
         await clean();
     });
 
@@ -157,6 +157,7 @@ const runBuild = async () => {
     await copyContent();
     await sitemap();
     await rssfeed();
+    console.log(chalk.green('[Build complete]'));
 };
 
 program.parse(process.argv);

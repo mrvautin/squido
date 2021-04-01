@@ -6,11 +6,22 @@
     "squido": "cli.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "ava",
     "build": "node cli.js build",
     "clean": "node cli.js clean",
     "serve": "node cli.js serve -w -b",
     "lint": "eslint ./"
+  },
+  "ava": {
+    "serial": true,
+    "files": [
+      "./tests/specs/*.js"
+    ],
+    "timeout": "10s",
+    "verbose": true,
+    "environmentVariables": {
+      "NODE_ENV": "test"
+    }
   },
   "repository": {
     "type": "git",
@@ -45,12 +56,14 @@
     "string-strip-html": "^8.2.7"
   },
   "devDependencies": {
+    "ava": "^3.15.0",
     "eslint": "^7.23.0",
     "eslint-config-standard": "^13.0.1",
     "eslint-plugin-extra-rules": "0.0.0-development",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-node": "^9.2.0",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1"
+    "eslint-plugin-standard": "^4.0.1",
+    "supertest": "^6.1.3"
   }
 }
