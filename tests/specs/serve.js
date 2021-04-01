@@ -3,6 +3,7 @@ const {
 } = require('ava');
 const request = require('supertest');
 const h = require('../helper');
+process.config = h.config;
 const app = require('../../lib/serve').start();
 
 test('Run serve - Check index', async t => {

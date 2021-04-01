@@ -48,11 +48,11 @@ project
 │       └───stylesheets
 ```
 
-The `/source` directory is required
+The `/<source_dir>` directory is the default directory for all the source files. You can change by adding another directory in the `sourceDir` of the `config.js` file.
 
 The `index.hbs`, `post.hbs`, `page.hbs` and `tag.hbs` files are used to insert into your template. The `index.hbs` is the root of your website, `post.hbs` will render the contents of the `.markdown` files and `page.hbs` and `tag.hbs` are used to build pagination and tag aggregation.
 
-Your posts go in the `/source/posts` directory. You will have `.markdown` files for each post/page you want.
+Your posts go in the `/<source_dir>/posts` directory. You will have `.markdown` files for each post/page you want.
 
 The `content` directory contains the files used for your website. Eg: Stylesheets, images, javascript files etc.
 
@@ -128,6 +128,8 @@ const config = {
         twitterHandle: '@mrvautin',
         baseUrl: 'http://localhost:4965',
         sourcesExt: 'markdown',
+        sourceDir: 'source',
+        buildDir: 'build',
         summaryLength: 250,
         port: 4965,
         pagination: true,
@@ -139,6 +141,8 @@ const config = {
         twitterHandle: '@mrvautin',
         baseUrl: 'http://example.com',
         sourcesExt: 'markdown',
+        sourceDir: 'source',
+        buildDir: 'build',
         summaryLength: 250,
         port: 4965,
         pagination: true,

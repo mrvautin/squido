@@ -88,16 +88,16 @@ program
                 const fullPath = path.join(process.cwd(), file);
 
                 // If a post, build
-                if(filedir === 'source/posts'){
+                if(filedir === `${config.sourceDir}/posts`){
                     await buildPost(fullPath);
                     return;
                 }
 
                 // If a layout, run a full build
-                if(filedir === 'source/layouts'){
+                if(filedir === `${config.sourceDir}/layouts`){
                     const sourceFiles = await readPosts();
-                await compilePosts(sourceFiles);
-                await buildIndex();
+                    await compilePosts(sourceFiles);
+                    await buildIndex();
                     return;
                 }
 
@@ -114,11 +114,11 @@ program
                 await copyFile(fullPath);
             });
             watcher.on('unlink', async file => {
-                await removeFile(file);
+                await removeFile(path.join(process.cwd(), file));
             });
 
             watcher.on('unlinkDir', async file => {
-                await removeFile(file);
+                await removeFile(path.join(process.cwd(), file));
             });
 
             watcher.on('add', async file => {
@@ -143,7 +143,7 @@ const runBuild = async () => {
     await buildTags();
 
     // Write default build script if one doesn't exist
-    if(!fs.existsSync(path.join(process.cwd(), 'source', 'package.json'))){
+    if(!fs.existsSync(path.join(process.cwd(), config.sourceDir, 'package.json'))){
         await buildFile();
     }
     await copyContent();

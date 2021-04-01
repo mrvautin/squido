@@ -9,7 +9,7 @@
     "test": "ava",
     "build": "node cli.js build",
     "clean": "node cli.js clean",
-    "serve": "node cli.js serve -w -b",
+    "serve": "node cli.js serve -c -w -b",
     "lint": "eslint ./"
   },
   "ava": {
