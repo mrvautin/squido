@@ -33,6 +33,13 @@
     "website",
     "blog",
     "fast",
+    "generator",
+    "html",
+    "framework",
+    "cms",
+    "bootstrap",
+    "cli",
+    "dev",
     "squido"
   ],
   "readmeFilename": "README.md",
