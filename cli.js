@@ -5,13 +5,6 @@ const fs = require('fs');
 const { getConfig } = require('./lib/common');
 const config = getConfig();
 
-// Set for use later
-process.config = config;
-
-// Set the baseURL
-const baseUrl = config.baseUrl || `http://localhost:${config.port || 4965}`;
-process.baseUrl = baseUrl;
-
 // Modules
 const { Command } = require('commander');
 const chokidar = require('chokidar');
