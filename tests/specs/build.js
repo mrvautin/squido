@@ -8,15 +8,25 @@ const config = getConfig();
 const h = require('../helper');
 
 test('Run build command', async t => {
-    const cmd = await h.exec(`${h.rootPath}/cli.js build`);
+    let cmd = '';
+    try{
+        cmd = await h.exec(`${h.rootPath}/cli.js build`);
+    }catch(ex){
+        console.log('Ex', ex);
+    }
 
     t.deepEqual(cmd.includes('[Build complete]'), true);
 });
 
 test('Run build with clean', async t => {
-    const cmd = await h.exec(`${h.rootPath}/cli.js build -c`);
-
-    const cleanString = `Cleaned: ${config.buildDir}`;
+    let cmd = '';
+    let cleanString = '';
+    try{
+        cmd = await h.exec(`${h.rootPath}/cli.js build -c`);
+        cleanString = `Cleaned: ${config.buildDir}`;
+    }catch(ex){
+        console.log('Ex', ex);
+    }
 
     t.deepEqual(cmd.includes(cleanString), true);
     t.deepEqual(cmd.includes('[Build complete]'), true);
@@ -24,7 +34,11 @@ test('Run build with clean', async t => {
 
 test('Run build - check output', async t => {
     // Run build and clean
-    await h.exec(`${h.rootPath}/cli.js build -c`);
+    try{
+        await h.exec(`${h.rootPath}/cli.js build -c`);
+    }catch(ex){
+        console.log('Ex', ex);
+    }
 
     t.deepEqual(await h.exists(path.join(config.buildDir, 'index.html')), true);
     t.deepEqual(await h.exists(path.join(config.buildDir, '404.html')), true);
@@ -36,7 +50,11 @@ test('Run build - check output', async t => {
 
 test('Run build - check for a post', async t => {
     // Run build and clean
-    await h.exec(`${h.rootPath}/cli.js build -c`);
+    try{
+        await h.exec(`${h.rootPath}/cli.js build -c`);
+    }catch(ex){
+        console.log('Ex', ex);
+    }
 
     // Get posts
     const posts = await glob(`${h.postPath}/*.${config.sourcesExt || 'markdown'}`);
