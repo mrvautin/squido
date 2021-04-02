@@ -22,8 +22,6 @@ module.exports = {
     exec,
     exists,
     rootPath: path.join(process.cwd()),
-    buildPath: config.buildPath,
-    sourcePath: config.sourceDir,
     postPath: path.join(config.sourceDir, 'posts'),
     config
 };
