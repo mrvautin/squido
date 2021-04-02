@@ -3,11 +3,14 @@ const chalk = require('chalk');
 const path = require('path');
 const fs = require('fs');
 const { getConfig } = require('./lib/common');
-const environment = process.env.NODE_ENV || 'development';
-const config = getConfig(environment);
+const config = getConfig();
 
 // Set for use later
 process.config = config;
+
+// Set the baseURL
+const baseUrl = config.baseUrl || `http://localhost:${config.port || 4965}`;
+process.baseUrl = baseUrl;
 
 // Modules
 const { Command } = require('commander');
@@ -132,7 +135,7 @@ program
     });
 
 const runBuild = async () => {
-    console.log(chalk.yellow(`[Building environment: ${environment}]`));
+    console.log(chalk.yellow(`[Building environment: ${config.environment}]`));
     const sourceFiles = await readPosts();
     await compilePosts(sourceFiles);
     // If Pagination turned on
@@ -143,7 +146,7 @@ const runBuild = async () => {
     await buildTags();
 
     // Write default build script if one doesn't exist
-    if(!fs.existsSync(path.join(process.cwd(), config.sourceDir, 'package.json'))){
+    if(!fs.existsSync(path.join(config.sourceDir, 'package.json'))){
         await buildFile();
     }
     await copyContent();
