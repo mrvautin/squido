@@ -82,11 +82,10 @@ program
 
             watcher.on('change', async file => {
                 const filedir = path.dirname(file);
-                const fullPath = path.join(process.cwd(), file);
 
                 // If a post, build
                 if(filedir === `${config.sourceDir}/posts`){
-                    await buildPost(fullPath);
+                    await buildPost(file);
                     return;
                 }
 
