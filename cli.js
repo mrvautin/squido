@@ -74,7 +74,8 @@ program
             const watcher = chokidar.watch(config.sourceDir, {
                 ignored: /(^|[/\\])\../,
                 persistent: true,
-                ignoreInitial: true
+                ignoreInitial: true,
+                atomic: true
             });
 
             console.log(chalk.green('[Watching for changes]'));
@@ -107,19 +108,18 @@ program
                 }
 
                 // All other files
-                await copyFile(fullPath);
+                await copyFile(file);
             });
             watcher.on('unlink', async file => {
-                await removeFile(path.join(process.cwd(), file));
+                await removeFile(file);
             });
 
             watcher.on('unlinkDir', async file => {
-                await removeFile(path.join(process.cwd(), file));
+                await removeFile(file);
             });
 
             watcher.on('add', async file => {
-                const fullPath = path.join(process.cwd(), file);
-                await copyFile(fullPath);
+                await copyFile(file);
             });
         }
 
