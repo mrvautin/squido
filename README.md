@@ -20,8 +20,8 @@ yarn global add squido
 
 ## Demo Blog
 
-A demo can be found [https://squido.netlify.app](https://squido.netlify.app)
+A demo can be found [https://blog.squido.org/](https://blog.squido.org/)
 
 ## Documentation
 
-`squido` documentation can be found here: [https://squido-docs.netlify.app/](https://squido-docs.netlify.app/) (which also happens to be a `squido` website demo/example)
+`squido` documentation can be found here: [https://docs.squido.org/](https://docs.squido.org/) (which also happens to be a `squido` website demo/example)
