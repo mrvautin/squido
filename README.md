@@ -4,6 +4,8 @@
 
 # squido
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 `squido` is a dead simple static website builder which can be hosted anywhere for super fast websites and very little effort.
 
 `squido` has baked in everything you need to run and host a website. You simply do the writing and customisation of style and layout. 
