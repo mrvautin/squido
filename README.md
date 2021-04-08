@@ -18,10 +18,14 @@ npm install -g squido
 yarn global add squido
 ```
 
-## Demo Blog
-
-A demo can be found [https://blog.squido.org/](https://blog.squido.org/)
-
 ## Documentation
 
 `squido` documentation can be found here: [https://docs.squido.org/](https://docs.squido.org/) (which also happens to be a `squido` website demo/example)
+
+## Homepage
+
+`squido` product page can be found here: [https://squido.org/](https://squido.org/)
+
+## Demo Blog
+
+A demo can be found here: [https://blog.squido.org/](https://blog.squido.org/)
