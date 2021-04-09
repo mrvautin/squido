@@ -10,7 +10,16 @@ const config = {
         summaryLength: 250,
         port: 4965,
         pagination: true,
-        postPerPage: 8
+        postPerPage: 8,
+        plugins: [
+            {
+                name: 'testplugin',
+                options: {
+                    setting: true,
+                    another: false
+                }
+            }
+        ]
     },
     development: {
         name: 'squido',

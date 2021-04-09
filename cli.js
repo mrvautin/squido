@@ -2,7 +2,7 @@
 const chalk = require('chalk');
 const path = require('path');
 const fs = require('fs');
-const { getConfig } = require('./lib/common');
+const { getConfig, runPlugins } = require('./lib/common');
 const config = getConfig();
 
 // Modules
@@ -146,6 +146,11 @@ const runBuild = async () => {
     await minifyCss();
     await sitemap();
     await rssfeed();
+
+    // Run plugins if any configured
+    if(config.plugins){
+        await runPlugins();
+    }
     console.log(chalk.green('[Build complete]'));
 };
 
