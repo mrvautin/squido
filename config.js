@@ -18,6 +18,13 @@ const config = {
                     setting: true,
                     another: false
                 }
+            },
+            {
+                name: 'dudplugin',
+                options: {
+                    setting: true,
+                    another: false
+                }
             }
         ]
     },
