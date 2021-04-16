@@ -66,6 +66,7 @@
     "markdown-it-attrs": "^4.0.0",
     "md5": "^2.3.0",
     "sitemap": "^6.4.0",
+    "slugify": "^1.5.0",
     "string-strip-html": "^8.2.7",
     "turndown": "^7.0.0",
     "uglify-js": "^3.13.3",
