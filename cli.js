@@ -21,7 +21,8 @@ const {
     buildTags
 } = require('./lib/build');
 const {
-    importWordPress
+    importWordPress,
+    importGhost
 } = require('./lib/import');
 const {
     sitemap,
@@ -76,6 +77,12 @@ program
         // Run Wordpress import
         if(options && options.type === 'wordpress'){
             await importWordPress(options.file);
+            return;
+        }
+
+         // Run Ghost import
+         if(options && options.type === 'ghost'){
+            await importGhost(options.file);
             return;
         }
 
