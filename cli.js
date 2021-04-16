@@ -21,6 +21,9 @@ const {
     buildTags
 } = require('./lib/build');
 const {
+    importWordPress
+} = require('./lib/import');
+const {
     sitemap,
     rssfeed
 } = require('./lib/feeds');
@@ -50,6 +53,33 @@ program
     .description('Clean your website build')
     .action(async() => {
         await clean();
+    });
+
+program
+    .command('import')
+    .description('Import from external sources')
+    .option('-f, --file <path>', 'Specify file to import')
+    .option('-t, --type <type>', 'Specify the type of file to import. Eg: wordpress')
+    .action(async(options) => {
+        // Check for a file
+        if(options && !options.file){
+            console.log(chalk.red('Import file not specified. Please specify the full path to the file you wish to import.'));
+            return;
+        }
+
+        // Check the file path is correct
+        if(!fs.existsSync(options.file)){
+            console.log(chalk.red('File not found. Please check the file path and try again.'));
+            return;
+        }
+
+        // Run Wordpress import
+        if(options && options.type === 'wordpress'){
+            await importWordPress(options.file);
+            return;
+        }
+
+        console.log(chalk.red('File type not supported. Please check the file type is supported and try again.'));
     });
 
 program
