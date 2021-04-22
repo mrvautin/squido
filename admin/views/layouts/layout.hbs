@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>squido - admin</title>
+    <meta property="og:title" content="squido - admin" />
+    <meta name="twitter:title" value="squido - admin" />
+    <meta name="description" itemprop="description" content="squido - admin" />
+    <meta property="og:description" content="squido - admin" />
+    <meta name="twitter:description" value="squido - admin" />
+    <link rel="icon" type="image/png" href="/content/images/favicon.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta2/css/bootstrap.min.css" integrity="sha512-aqT9YD5gLuLBr6ipQAS+72o5yHKzgZbGxEh6iY8lW/r6gG14e2kBTAJb8XrxzZrMOgSmDqtLaF76T0Z6YY2IHg==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/public/stylesheets/vanilla-notify.css">
+    <link rel="stylesheet" href="/public/stylesheets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplemde/1.11.2/simplemde.min.css" integrity="sha512-lB03MbtC3LxImQ+BKnZIyvVHTQ8SSmQ15AhVh5U/+CCp4wKtZMvgLGXbZIjIBBbnKsmk3/6n2vcF8a9CtVVSfA==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplemde/1.11.2/simplemde.min.js" integrity="sha512-ksSfTk6JIdsze75yZ8c+yDVLu09SNefa9IicxEE+HZvWo9kLPY1vrRlmucEMHQReWmEdKqusQWaDMpkTb3M2ug==" crossorigin="anonymous"></script>
+    <script src="/public/javascripts/vanilla-notify.min.js"></script>
+    <script src="/public/javascripts/admin.js"></script>
+  </head>
+  <body>
+    <header class="d-flex flex-column flex-md-row align-items-center px-md-4 bg-white border-bottom">
+        <div class="h4 my-0 mt-1 me-md-auto brand">
+          <a class="navbar-brand" href="/squido">
+              <img src="/content/images/squido.svg" alt="" width="70" height="70" class="d-inline-block align-text-top">squido
+          </a>
+        </div>
+        <nav class="my-2 my-md-0 me-md-3">
+            <a class="p-2 text-dark" href="/squido">Home</a>
+        </nav>
+    </header>
+    <main class="container-fluid">
+      <div class="row">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+          <div class="position-sticky pt-3">
+              <ul class="nav flex-column">
+                  <li class="nav-item navbar-header">
+                      <h3>Posts</h3>
+                  </li>
+                  {{#each posts}}
+                  <li class="nav-item">
+                      <a class="nav-link" aria-current="page" href="/squido/{{this.permalink}}">
+                      {{this.title}}
+                      </a>
+                  </li>
+                  {{/each}}
+              </ul>
+          </div>
+        </nav>
+        <main class="col-md-9 ms-sm-auto col-lg-10 mt-3 px-md-4">
+          {{{body}}}
+        </main>
+      </div>
+    </main>
+  </body>
+</html>

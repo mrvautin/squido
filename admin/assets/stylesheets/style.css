@@ -1,0 +1,94 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body{
+    color: #454545 !important;
+}
+
+a{
+    color: #F95A77 !important;
+    text-decoration: none !important;
+}
+
+a:hover{
+    color: #FF96A9 !important;
+    text-decoration: underline !important;
+}
+
+.btn-secondary {
+    color: #ffffff !important;
+}
+
+.btn-outline-secondary {
+    color: #ffffff !important;
+    background-color: #F95A77 !important;
+    border-color: #F95A77 !important;
+}
+
+.btn-outline-secondary:hover {
+    color: #ffffff !important;
+    background-color: #FF96A9 !important;
+    border-color: #FF96A9 !important;
+}
+
+.jumbo-title {
+    margin-top: 50px;
+    font-size: 5.5rem;
+    font-weight: 700;
+}
+
+.jumbo-subtitle {
+    font-size: 3.0rem;
+    font-weight: 700;
+}
+
+.article-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+}
+
+h1, h2, h3{
+    color: #264653 !important;
+    font-weight: 700; 
+}
+
+.brand a{
+    color: #264653 !important;
+    font-size: 2.8rem !important;
+    font-weight: 700 !important;
+}
+
+.navbar-brand {
+    font-size: 2rem!important;
+    font-weight: 500!important;
+}
+
+main > .container {
+    padding: 60px 15px 0;
+}
+
+.nav-link{
+    padding-top: 0.3rem !important;
+    padding-right: 0 !important;
+    padding-bottom: 0.3rem !important;
+    padding-left: 1rem !important;
+}
+
+.navbar-header{
+    padding-left: 1rem !important;
+}
+
+.sidebar {
+    border-right: 1px solid #dee2e6!important;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+    line-height: 50px; /* Vertically center the text there */
+    background-color: #f5f5f5;
+}
