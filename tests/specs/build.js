@@ -4,6 +4,7 @@ const {
 const path = require('path');
 const fs = require('fs');
 const glob = require('globby');
+const AdmZip = require('adm-zip');
 const { getMeta, getConfig } = require('../../lib/common');
 const config = getConfig();
 const h = require('../helper');
@@ -89,7 +90,7 @@ test('Run build - check for a post template', async t => {
     t.deepEqual(fileContents.includes('<h1>Diff post template</h1>'), true);
 });
 
-test.only('Run build - template doesnt exist', async t => {
+test('Run build - template doesnt exist', async t => {
     const filecontents = `---
 title: a dodgy template file
 permalink: a-dodgy-template-file
@@ -127,4 +128,29 @@ template: some-template-path-doesnt-exist.hbs
 
     // Remove temp post file
     fs.unlinkSync(filepath);
+});
+
+test('Run build - postBuild zip', async t => {
+    // Run build and clean
+    try{
+        await h.exec(`${h.rootPath}/cli.js build -c`);
+    }catch(ex){
+        console.log('Ex', ex);
+    }
+
+    // Check for zip file
+    t.deepEqual(await h.exists(path.join(config.buildDir, 'build.zip')), true);
+
+    // Get all files in the build dir
+    const buildFiles = await glob([
+        `${config.buildDir}/**/*`,
+        `!${config.buildDir}/build.zip`
+    ]);
+
+    // Read our zip to get files
+    const zip = new AdmZip(path.join(config.buildDir, 'build.zip'));
+    const zipEntries = await zip.getEntries();
+
+    // Check the number of files in /build dir matches the Zip
+    t.deepEqual(buildFiles.length, zipEntries.length);
 });

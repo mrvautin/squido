@@ -26,6 +26,12 @@ const config = {
                     another: false
                 }
             }
+        ],
+        postBuild: [
+            {
+                name: 'zip',
+                options: {}
+            }
         ]
     },
     development: {
@@ -39,7 +45,13 @@ const config = {
         summaryLength: 250,
         port: 4965,
         pagination: true,
-        postPerPage: 8
+        postPerPage: 8,
+        postBuild: [
+            {
+                name: 'zip',
+                options: {}
+            }
+        ]
     },
     production: {
         name: 'squido',
