@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplemde/1.11.2/simplemde.min.css" integrity="sha512-lB03MbtC3LxImQ+BKnZIyvVHTQ8SSmQ15AhVh5U/+CCp4wKtZMvgLGXbZIjIBBbnKsmk3/6n2vcF8a9CtVVSfA==" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/simplemde/1.11.2/simplemde.min.js" integrity="sha512-ksSfTk6JIdsze75yZ8c+yDVLu09SNefa9IicxEE+HZvWo9kLPY1vrRlmucEMHQReWmEdKqusQWaDMpkTb3M2ug==" crossorigin="anonymous"></script>
     <script src="/public/javascripts/vanilla-notify.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FlexSearch/0.6.22/flexsearch.min.js" integrity="sha512-KxRyF5OGyocY7+bOecICRkukb/F8P8yFO/86j3TZ8zxzL5nieFBJFFk0sd5aj387UfSOcSan4FJ86+ydH50nsw==" crossorigin="anonymous"></script>
     <script src="/public/javascripts/admin.js"></script>
   </head>
   <body>
@@ -34,16 +35,20 @@
         <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
           <div class="position-sticky pt-3">
               <ul class="nav flex-column">
-                  <li class="nav-item navbar-header">
-                      <h3>Posts</h3>
-                  </li>
-                  {{#each posts}}
-                  <li class="nav-item">
-                      <a class="nav-link" aria-current="page" href="/squido/{{this.permalink}}">
-                      {{this.title}}
-                      </a>
-                  </li>
-                  {{/each}}
+                <li class="nav-item navbar-header">
+                  <h3>Posts</h3>
+                </li>
+                <li class="nav-item mb-2">
+                  <input type="search" class="form-control ds-input" id="search-input" placeholder="Search docs..." aria-label="Search docs for..." autocomplete="off" data-bd-docs-version="5.0" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" style="position: relative; vertical-align: top;">
+                  <ul id="search-results" class="list-group" style="z-index: 999; position: absolute; width: 100%;"></ul>
+                </li>
+                {{#each (limit posts 10)}}
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="/squido/{{this.id}}">
+                    {{this.title}}
+                    </a>
+                </li>
+                {{/each}}
               </ul>
           </div>
         </nav>

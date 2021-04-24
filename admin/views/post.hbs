@@ -1,11 +1,19 @@
 <div class="row">
     <div class="w-100">
         <div class="input-group mb-3">
-            <span class="input-group-text" id="titleAddon">Post title</span>
+            <span class="input-group-text" id="titleAddon">Title</span>
             <input type="text" class="form-control" id="post-title" value="{{post.title}}" aria-label="title" aria-describedby="titleAddon">
             <button id="save-post" class="btn btn-success float-end">Save post</button>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="permalinkAddon">Permalink</span>
+            <input type="text" class="form-control" id="post-permalink" value="{{post.permalink}}" aria-label="title" aria-describedby="permalinkAddon">
         </div>
     </div>
 </div>
 <textarea id="md-editor">{{post.markdown}}</textarea>
-<input type="hidden" id="post-permalink" value="{{post.permalink}}">
+<div class="input-group mb-4">
+    <span class="input-group-text">Description</span>
+    <textarea class="form-control" id="post-description" aria-label="Post description">{{post.description}}</textarea>
+</div>
+<input type="hidden" id="post-id" value="{{post.id}}">
