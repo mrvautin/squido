@@ -3,7 +3,15 @@ const {
 } = require('ava');
 const request = require('supertest');
 const h = require('../helper');
-const app = require('../../lib/serve').start();
+const { readPosts } = require('../../lib/source');
+const server = require('../../lib/serve');
+let app;
+
+test.before(async t => {
+    // Populate process.postList for tests
+    await readPosts();
+    app = await server.start();
+});
 
 test('Run serve - Check index', async t => {
     // Run build and clean
