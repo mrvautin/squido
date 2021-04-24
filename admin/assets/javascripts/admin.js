@@ -26,9 +26,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 markdown: mdContent
             })
         })
-        .then((response) => {
+        .then(async(response) => {
             if(!response.ok){
-                vNotify.error({ text: 'Error updating post. Check logs.', title: 'Error', position: 'topRight' });
+                const err = await response.json();
+                vNotify.error({ text: `Error updating post: ${err.error}.`, title: 'Error', position: 'topRight' });
                 return;
             }
             vNotify.success({ text: 'Successfully updated post', title: 'Success', position: 'topRight' });

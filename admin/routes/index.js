@@ -65,6 +65,13 @@ router.post('/squido/save', async (req, res) => {
     }
     // Check for permalink change and update
     if(post.fileMeta.permalink !== req.body.permalink){
+        // Check for duplicates
+        const permalinkIndex = _.findIndex(posts, (o) => { return o.permalink === req.body.permalink; });
+        if(permalinkIndex !== -1){
+            console.log(chalk.red('Error saving post: Permalink already exists'));
+            res.status(400).json({ error: 'Permalink already exists' });
+            return;
+        }
         post.fileMeta.permalink = req.body.permalink;
     }
     // Check for description change and update
