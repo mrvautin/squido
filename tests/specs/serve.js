@@ -83,7 +83,7 @@ test('Create new post', async t => {
     const response = await request(app)
     .post('/squido/create');
     t.is(response.status, 200);
-    t.deepEqual(response.body.id.length, 18);
+    t.deepEqual(h.greaterThan(response.body.id.length, 0), true);
 });
 
 test('Search term', async t => {
@@ -97,7 +97,7 @@ test('Search term', async t => {
     })
     .set('Accept', 'application/json');
     t.is(response.status, 200);
-    t.deepEqual(response.body.length, 1);
+    t.deepEqual(h.greaterThan(response.body.length, 0), true);
 });
 
 test('Search term - not found', async t => {
