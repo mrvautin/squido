@@ -1,9 +1,14 @@
 const express = require('express');
 const fs = require('fs');
+const path = require('path');
 const yaml = require('js-yaml');
 const chalk = require('chalk');
+const uniqid = require('uniqid');
 const FlexSearch = require('flexsearch');
 const _ = require('lodash');
+const { getConfig } = require('../../lib/common');
+const { readPosts, compilePosts } = require('../../lib/source');
+const config = getConfig();
 const router = express.Router();
 
 // Setup post index
@@ -13,11 +18,13 @@ for(const post of process.postList){
     index.add(post.id, post.body.replace(htmlRegex, ''));
 }
 
+// The admin index, shows first post
 router.get('/squido', async (req, res) => {
     const firstPost = process.postList[0];
     res.redirect(`/squido/${firstPost.id}`);
 });
 
+// Viewing/editing a post
 router.get('/squido/:post', async (req, res) => {
     const postId = req.params.post;
     const posts = process.postList;
@@ -33,10 +40,11 @@ router.get('/squido/:post', async (req, res) => {
         title: 'squido - Admin',
         posts,
         post,
-        config: req.app.config
+        config
     });
 });
 
+// Used for the sidebar search
 router.post('/squido/search', async (req, res) => {
     const results = await index.search({
         query: req.body.searchTerm,
@@ -55,6 +63,48 @@ router.post('/squido/search', async (req, res) => {
     res.status(200).json(filteredResults);
 });
 
+// Creates a new empty post
+router.post('/squido/create', async (req, res) => {
+    const postId = uniqid();
+    const postContents =
+`---
+title: hello world
+permalink: ${postId}
+description: hello world
+date: ${new Date().toISOString()}
+--- 
+Hello world
+`;
+    // Save our new file
+    fs.writeFileSync(path.join(config.sourceDir, 'posts', `squido-${postId}.${config.sourcesExt}`), postContents);
+
+    // Update post list
+    const sourceFiles = await readPosts();
+    await compilePosts(sourceFiles);
+    res.status(200).json({});
+});
+
+// Deletes a post
+router.post('/squido/delete', async (req, res) => {
+    const posts = process.postList;
+    const postIndex = _.findIndex(posts, (o) => { return o.id === req.body.postId; });
+    const post = posts[postIndex];
+
+    if(!post){
+        res.status(400).json({ error: 'Post not found' });
+        return;
+    }
+
+    // Delete file
+    fs.unlinkSync(post.filename);
+
+    // Update post list
+    const sourceFiles = await readPosts();
+    await compilePosts(sourceFiles);
+    res.status(200).json({});
+});
+
+// Saves changes to a post
 router.post('/squido/save', async (req, res) => {
     const posts = process.postList;
     const postIndex = _.findIndex(posts, (o) => { return o.id === req.body.postId; });
@@ -92,6 +142,17 @@ ${req.body.markdown}
         process.postList[postIndex].title = req.body.title;
         process.postList[postIndex].permalink = req.body.permalink;
         process.postList[postIndex].description = req.body.description;
+        // Check for a temp post and rename file to permalink on first update
+        if(path.basename(post.filename).substring(0, 7) === 'squido-'){
+            const fileParse = path.parse(post.filename);
+            const newName = path.join(fileParse.dir, `${req.body.permalink}${fileParse.ext}`);
+            // Rename our file
+            fs.renameSync(post.filename, newName);
+            // Write updates to new file
+            fs.writeFileSync(newName, updatedPost);
+            res.status(200).json({});
+            return;
+        }
         fs.writeFileSync(post.filename, updatedPost);
         res.status(200).json({});
     }catch(ex){

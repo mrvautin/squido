@@ -148,6 +148,8 @@ program
             });
             watcher.on('unlink', async file => {
                 await removeFile(file);
+                const sourceFiles = await readPosts();
+                await compilePosts(sourceFiles);
             });
 
             watcher.on('unlinkDir', async file => {

@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/public/stylesheets/vanilla-notify.css">
     <link rel="stylesheet" href="/public/stylesheets/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplemde/1.11.2/simplemde.min.css" integrity="sha512-lB03MbtC3LxImQ+BKnZIyvVHTQ8SSmQ15AhVh5U/+CCp4wKtZMvgLGXbZIjIBBbnKsmk3/6n2vcF8a9CtVVSfA==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta3/js/bootstrap.min.js" integrity="sha512-mp3VeMpuFKbgxm/XMUU4QQUcJX4AZfV5esgX72JQr7H7zWusV6lLP1S78wZnX2z9dwvywil1VHkHZAqfGOW7Nw==" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/simplemde/1.11.2/simplemde.min.js" integrity="sha512-ksSfTk6JIdsze75yZ8c+yDVLu09SNefa9IicxEE+HZvWo9kLPY1vrRlmucEMHQReWmEdKqusQWaDMpkTb3M2ug==" crossorigin="anonymous"></script>
     <script src="/public/javascripts/vanilla-notify.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FlexSearch/0.6.22/flexsearch.min.js" integrity="sha512-KxRyF5OGyocY7+bOecICRkukb/F8P8yFO/86j3TZ8zxzL5nieFBJFFk0sd5aj387UfSOcSan4FJ86+ydH50nsw==" crossorigin="anonymous"></script>
@@ -25,8 +26,15 @@
           <a class="navbar-brand" href="/squido">
               <img src="/content/images/squido.svg" alt="" width="70" height="70" class="d-inline-block align-text-top">squido
           </a>
+          <a href="#" class="float-end d-block d-sm-none" data-bs-toggle="collapse" data-bs-target="#sidebarMenu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list mb-1" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+            </svg>
+          </a>
         </div>
         <nav class="my-2 my-md-0 me-md-3">
+            <button class="p-2 btn btn-sm btn-danger" id="delete-post">Delete post</button>
+            <button class="p-2 btn btn-sm btn-success" id="create-post">New post</button>
             <a class="p-2 text-dark" href="/squido">Home</a>
         </nav>
     </header>

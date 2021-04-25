@@ -36,6 +36,51 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    document.getElementById('create-post').addEventListener('click', () => {
+        fetch('/squido/create', {
+            method: 'POST',
+            body: {}
+        })
+        .then(async(response) => {
+            if(!response.ok){
+                const err = await response.json();
+                vNotify.error({ text: `Error creating post: ${err.error}.`, title: 'Error', position: 'topRight' });
+                return;
+            }
+            vNotify.success({ text: 'Successfully created post', title: 'Success', position: 'topRight' });
+            setTimeout(() => {
+                location.reload();
+            }, 2000);
+        });
+    });
+
+    document.getElementById('delete-post').addEventListener('click', (e) => {
+        if(!confirm('Are you sure?')){
+            e.preventDefault();
+            return;
+        }
+        fetch('/squido/delete', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                postId: document.getElementById('post-id').value
+            })
+        })
+        .then(async(response) => {
+            if(!response.ok){
+                const err = await response.json();
+                vNotify.error({ text: `Error deleting post: ${err.error}.`, title: 'Error', position: 'topRight' });
+                return;
+            }
+            vNotify.success({ text: 'Successfully deleted post', title: 'Success', position: 'topRight' });
+            setTimeout(() => {
+                location.reload();
+            }, 2000);
+        });
+    });
+
     const htmlRegex = /<.+?>/g;
     const searchInput = document.getElementById('search-input');
     const searchResults = document.getElementById('search-results');
