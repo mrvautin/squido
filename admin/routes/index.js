@@ -81,7 +81,9 @@ Hello world
     // Update post list
     const sourceFiles = await readPosts();
     await compilePosts(sourceFiles);
-    res.status(200).json({});
+    res.status(200).json({
+        id: postId
+    });
 });
 
 // Deletes a post
@@ -149,12 +151,13 @@ ${req.body.markdown}
             // Rename our file
             fs.renameSync(post.filename, newName);
             // Write updates to new file
+            process.postList[postIndex].filename = newName;
             fs.writeFileSync(newName, updatedPost);
-            res.status(200).json({});
+            res.status(200).json(process.postList[postIndex]);
             return;
         }
         fs.writeFileSync(post.filename, updatedPost);
-        res.status(200).json({});
+        res.status(200).json(process.postList[postIndex]);
     }catch(ex){
         console.log(chalk.red(`Error saving post: ${ex}`));
         res.status(400).json({});
