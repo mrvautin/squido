@@ -12,7 +12,7 @@ const serve = require('./lib/serve');
 const {
     clean,
     buildIndex,
-    buildFile,
+    rootFiles,
     buildPost,
     copyFile,
     copyContent,
@@ -175,11 +175,7 @@ const runBuild = async () => {
     }
     await buildIndex();
     await buildTags();
-
-    // Write default build script if one doesn't exist
-    if(!fs.existsSync(path.join(config.sourceDir, 'package.json'))){
-        await buildFile();
-    }
+    await rootFiles();
     await copyContent();
     await minifyJs();
     await minifyCss();
