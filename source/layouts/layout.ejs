@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <% if (locals.meta && locals.meta.title) { -%>
+    <title><%= locals.meta.title %></title>
+    <meta property="og:title" content="<%= locals.meta.title %>" />
+    <meta name="twitter:title" value="<%= locals.meta.title %>" />
+    <meta name="description" itemprop="description" content="<%= locals.meta.description %>" />
+    <meta property="og:description" content="<%= locals.meta.description %>" />
+    <meta name="twitter:description" value="<%= locals.meta.description %>" />
+    <% } else { %>
+    <% if (locals.page) { -%>
+    <title><%= locals.config.name %> - Page: <%= locals.page %></title>
+    <meta property="og:title" content="<%= locals.config.name %> - Page: <%= locals.page %>" />
+    <meta name="twitter:title" value="<%= locals.config.name %> - Page: <%= locals.page %>" />
+    <meta name="description" itemprop="description" content="<%= locals.config.name %> - Page: <%= locals.page %>" />
+    <meta property="og:description" content="<%= locals.config.name %> - Page: <%= locals.page %>" />
+    <meta name="twitter:description" value="<%= locals.config.name %> - Page: <%= locals.page %>" />
+    <% } %>
+    <% if (locals.tag) { %>
+    <title><%= locals.config.name %> - Tag: <%= locals.tag %></title>
+    <meta property="og:title" content="<%= locals.config.name %> - Tag: <%= locals.tag %>" />
+    <meta name="twitter:title" value="<%= locals.config.name %> - Tag: <%= locals.tag %>" />
+    <meta name="description" itemprop="description" content="<%= locals.config.name %> - Posts containing tag: <%= locals.tag %>" />
+    <meta property="og:description" content="<%= locals.config.name %> - Posts containing tag: <%= locals.tag %>" />
+    <meta name="twitter:description" value="<%= locals.config.name %> - Posts containing tag: <%= locals.tag %>" />
+    <% } %>
+    <% } %>
+    <link rel="canonical" href="<%= locals.meta.url %>" />
+    <link rel="icon" type="image/png" href="/content/images/favicon.png" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="<%= locals.meta.url %>" />
+    <meta property="og:site_name" content="<%= locals.config.name %>" />
+    <meta name="twitter:card" value="summary" />
+    <meta name="twitter:url" value="<%= locals.meta.url %>" />
+    <% if (locals.meta.image) { %>
+    <meta name="twitter:image" value="<<%= locals.meta.image %>" />
+    <% } %>
+    <% if (locals.config.twitterHandle) { %>
+    <meta name="twitter:site" value="<%= locals.config.twitterHandle %>" />
+    <% } %>
+    <link rel="alternate" type="application/rss+xml" href="<%= locals.config.baseUrl %>/rss" />
+    <link rel="alternate" type="application/atom+xml" href="<%= locals.config.baseUrl %>/atom" />
+    <link rel="alternate" type="application/json" href="<%= locals.config.baseUrl %>/json" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta2/css/bootstrap.min.css" integrity="sha512-aqT9YD5gLuLBr6ipQAS+72o5yHKzgZbGxEh6iY8lW/r6gG14e2kBTAJb8XrxzZrMOgSmDqtLaF76T0Z6YY2IHg==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/content/stylesheets/style<%= locals.config.fileEnv %>.css">
+    <script src="/content/javascripts/site<%= locals.config.fileEnv %>.js"></script>
+  </head>
+  <body>
+    <header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+        <div class="h4 my-0 me-md-auto brand">
+          <a class="navbar-brand" href="/">
+              <img src="/content/images/squido.svg" alt="" width="70" height="70" class="d-inline-block align-text-top">squido
+          </a>
+        </div>
+        <nav class="my-2 my-md-0 me-md-3">
+            <a class="p-2 text-dark" href="/">Home</a>
+            <a class="p-2 text-dark" href="/about">About</a>
+        </nav>
+    </header>
+    <main class="container">
+      <%- locals.body %>
+    </main>
+    <footer class="footer mt-5 py-3 bg-light">
+        <div class="container text-center">
+            <span class="text-muted">squido</span>
+        </div>
+    </footer>
+  </body>
+</html>

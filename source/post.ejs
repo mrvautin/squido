@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col-md-8 offset-md-2 mb-5">
+        <div class="mt-5">
+            <h1><%= locals.title %></h1>
+            <%- locals.body %>
+        </div>
+    </div>
+</div>
+<% if (locals.tags) { %>
+<div class="row">
+    <div class="col-md-8 offset-md-2 mb-5">
+        <h5 class="text-muted">Tags:</h5>
+        <% for(const tag of locals.tags){ %>
+        <a href="/tag/<%= tag %>"><%= tag %></a> |
+        <% }; %>
+    </div>
+</div>
+<% } %>

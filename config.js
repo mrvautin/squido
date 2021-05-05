@@ -40,6 +40,8 @@ const config = {
         twitterHandle: '@mrvautin',
         baseUrl: 'http://localhost:4965',
         sourcesExt: 'markdown',
+        templateEngine: 'hbs',
+        templateConfig: {},
         sourceDir: 'source',
         buildDir: 'build',
         summaryLength: 250,

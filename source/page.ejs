@@ -1,0 +1,37 @@
+<div class="row">
+  <% for(const post of locals.posts){ %>
+  <div class="col-xs-12 col-sm-3 mb-4 d-flex align-items-stretch">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <p class="card-text">
+          <h2>
+            <a href="/<%= post.permalink %>"><%= post.title %></a> 
+          </h2>
+          <%= post.summary %>
+        </p>
+        <div class="d-flex justify-content-between align-items-center">
+          <a class="btn btn-outline-secondary" href="/<%= post.permalink %>">Read more..</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% }; %>
+</div>
+<!-- Pagination -->
+<% if (locals.config.pagination) { %>
+<% if (locals.shouldPaginate) { %>
+<div class="row">
+  <div class="col-xs-12 col-sm-12 mb-4 text-center">
+    <p class="text-muted">Page <%= locals.page %> of <%= locals.pages %></p>
+    <div class="btn-group" role="group">
+    <% if (locals.prevPage) { %>
+        <a href="/page/<%= locals.prevPage %>" class="btn btn-outline-secondary">&laquo; Prev Page</a>
+    <% } %>
+    <% if (locals.nextPage) { %>
+        <a href="/page/<%= locals.nextPage %>" class="btn btn-outline-secondary">Next Page &raquo;</a>
+    <% } %>
+    </div>
+  </div>
+</div>
+<% } %>
+<% } %>

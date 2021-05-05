@@ -135,8 +135,8 @@ program
                 }
 
                 // If index, build index
-                if(path.extname(file) === '.hbs'){
-                    if(path.basename(file) === 'index.hbs'){
+                if(path.extname(file) === `.${config.templateEngine}`){
+                    if(path.basename(file) === `index.${config.templateEngine}`){
                         await buildIndex();
                         return;
                     }
