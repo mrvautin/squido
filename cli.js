@@ -2,7 +2,7 @@
 const chalk = require('chalk');
 const path = require('path');
 const fs = require('fs');
-const { getConfig, runPlugins, runPostBuild } = require('./lib/common');
+const { getConfig, runPlugins, runPostBuild, runSetupNew } = require('./lib/common');
 const config = getConfig();
 
 // Modules
@@ -54,6 +54,13 @@ program
     .description('Clean your website build')
     .action(async() => {
         await clean();
+    });
+
+program
+    .command('new')
+    .description('Sets up a new website')
+    .action(async() => {
+        await runSetupNew();
     });
 
 program
