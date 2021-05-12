@@ -1,6 +1,6 @@
 <div class="row">
   <% for(const post of locals.posts){ %>
-  <div class="col-xs-12 col-sm-3 mb-4 d-flex align-items-stretch">
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-4 d-flex align-items-stretch">
     <div class="card shadow-sm">
       <div class="card-body">
         <p class="card-text">
@@ -21,7 +21,7 @@
 <% if (locals.config.pagination) { %>
 <% if (locals.shouldPaginate) { %>
 <div class="row">
-  <div class="col-xs-12 col-sm-12 mb-4 text-center">
+  <div class="col-12 mb-4 text-center">
     <p class="text-muted">Page <%= locals.page %> of <%= locals.pages %></p>
     <div class="btn-group" role="group">
     <% if (locals.prevPage) { %>
