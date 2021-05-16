@@ -4,19 +4,11 @@ const path = require('path');
 const yaml = require('js-yaml');
 const chalk = require('chalk');
 const uniqid = require('uniqid');
-const FlexSearch = require('flexsearch');
 const _ = require('lodash');
 const { getConfig } = require('../../lib/common');
 const { compilePosts } = require('../../lib/source');
 const config = getConfig();
 const router = express.Router();
-
-// Setup post index
-const htmlRegex = /<.+?>/g;
-const index = new FlexSearch();
-for(const post of process.posts){
-    index.add(post.id, post.body.replace(htmlRegex, ''));
-}
 
 // The admin index, shows first post
 router.get('/squido', async (req, res) => {
@@ -46,18 +38,11 @@ router.get('/squido/:post', async (req, res) => {
 
 // Used for the sidebar search
 router.post('/squido/search', async (req, res) => {
-    const results = await index.search({
-        query: req.body.searchTerm,
-        async: false,
-        limit: 10,
-        encode: 'icase',
-        tokenize: 'full',
-        worker: 4
-    });
+    const searchResults = process.postIndex.search(req.body.searchTerm);
 
     const filteredResults = [];
-    for(const result of results){
-        const post = _.find(process.posts, ['id', result]);
+    for(const result of searchResults){
+        const post = _.find(process.posts, ['id', result.ref]);
         const postObj = {
             id: post.id,
             title: post.title,
@@ -116,7 +101,6 @@ router.post('/squido/delete', async (req, res) => {
 // Saves changes to a post
 router.post('/squido/save', async (req, res) => {
     const posts = process.posts;
-    // const postIndex = _.findIndex(posts, (o) => { return o.id === req.body.postId; });
     const post = posts.find(p => p.id === req.body.postId);
 
     // Check for title change and update
