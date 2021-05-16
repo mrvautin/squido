@@ -28,7 +28,7 @@ const {
     sitemap,
     rssfeed
 } = require('./lib/feeds');
-const { readPosts, compilePosts } = require('./lib/source');
+const { compilePosts } = require('./lib/source');
 const { minifyJs, minifyCss } = require('./lib/minify');
 
 // Setup CLI
@@ -135,8 +135,7 @@ program
 
                 // If a layout, run a full build
                 if(filedir === `${config.sourceDir}/layouts`){
-                    const sourceFiles = await readPosts();
-                    await compilePosts(sourceFiles);
+                    await compilePosts();
                     await buildIndex();
                     return;
                 }
@@ -155,8 +154,7 @@ program
             });
             watcher.on('unlink', async file => {
                 await removeFile(file);
-                const sourceFiles = await readPosts();
-                await compilePosts(sourceFiles);
+                await compilePosts();
             });
 
             watcher.on('unlinkDir', async file => {
@@ -174,8 +172,7 @@ program
 
 const runBuild = async () => {
     console.log(chalk.yellow(`[Building environment: ${config.environment}]`));
-    const sourceFiles = await readPosts();
-    await compilePosts(sourceFiles);
+    await compilePosts();
     // If Pagination turned on
     if(config.pagination){
         await buildPagination();

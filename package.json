@@ -17,7 +17,7 @@
     "files": [
       "./tests/specs/*.js"
     ],
-    "timeout": "10s",
+    "timeout": "20s",
     "verbose": true,
     "environmentVariables": {
       "NODE_ENV": "test"
@@ -67,10 +67,12 @@
     "highlight.js": "^10.7.1",
     "js-yaml": "^4.0.0",
     "lodash": "^4.17.21",
+    "lunr": "^2.3.9",
     "markdown-it": "^12.0.4",
     "markdown-it-anchor": "^7.1.0",
     "markdown-it-attrs": "^4.0.0",
     "md5": "^2.3.0",
+    "md5-file": "^5.0.0",
     "netlify": "^6.1.20",
     "node-fetch": "^2.6.1",
     "sitemap": "^6.4.0",

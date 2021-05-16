@@ -8,11 +8,32 @@
 </div>
 {{#if tags}}
 <div class="row">
-    <div class="col-md-8 offset-md-2 mb-5">
+    <div class="col-md-8 offset-md-2 mb-3">
         <h5 class="text-muted">Tags:</h5>
         {{#each tags}}
         <a href="/tag/{{this}}">{{this}}</a> |
         {{/each}}
+    </div>
+</div>
+{{/if}}
+{{#if related}}
+<div class="row mb-3">
+    <div class="col-md-8 offset-md-2 d-none d-lg-block">
+        <h3>Related posts</h3>
+        <div class="row mb-2">
+        {{#each related}}
+            {{#ifCond @index '<' 3}}
+            <div class="col-sm-12 col-md-6 col-xl-4">
+                <div class="card related-card">
+                    <div class="card-body">
+                        <h5 class="card-title related-card-title">{{../this.title}}</h5>
+                        <a href="{{../this.url}}" class="btn btn-outline-secondary">Read more...</a>
+                    </div>
+                </div>
+            </div>
+            {{/ifCond}}
+        {{/each}}
+        </div>
     </div>
 </div>
 {{/if}}

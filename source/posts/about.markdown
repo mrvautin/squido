@@ -3,7 +3,7 @@ title: About page
 permalink: about
 description: About page
 date: '2021-03-11 19:17:00'
-ignore: true
+visible: false
 hidden: false
 ---
 

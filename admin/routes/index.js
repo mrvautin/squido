@@ -7,27 +7,27 @@ const uniqid = require('uniqid');
 const FlexSearch = require('flexsearch');
 const _ = require('lodash');
 const { getConfig } = require('../../lib/common');
-const { readPosts, compilePosts } = require('../../lib/source');
+const { compilePosts } = require('../../lib/source');
 const config = getConfig();
 const router = express.Router();
 
 // Setup post index
 const htmlRegex = /<.+?>/g;
 const index = new FlexSearch();
-for(const post of process.postList){
+for(const post of process.posts){
     index.add(post.id, post.body.replace(htmlRegex, ''));
 }
 
 // The admin index, shows first post
 router.get('/squido', async (req, res) => {
-    const firstPost = process.postList[0];
+    const firstPost = process.posts[0];
     res.redirect(`/squido/${firstPost.id}`);
 });
 
 // Viewing/editing a post
 router.get('/squido/:post', async (req, res) => {
     const postId = req.params.post;
-    const posts = process.postList;
+    const posts = process.posts;
     const post = posts.find(p => p.id === postId);
 
     // Check for post
@@ -55,11 +55,18 @@ router.post('/squido/search', async (req, res) => {
         worker: 4
     });
 
-    const filteredResults = _.chain(process.postList)
-    .keyBy('id')
-    .at(results)
-    .value();
+    const filteredResults = [];
+    for(const result of results){
+        const post = _.find(process.posts, ['id', result]);
+        const postObj = {
+            id: post.id,
+            title: post.title,
+            permalink: post.permalink
+        };
+        filteredResults.push(postObj);
+    }
 
+    // Return results
     res.status(200).json(filteredResults);
 });
 
@@ -79,8 +86,8 @@ Hello world
     fs.writeFileSync(path.join(config.sourceDir, 'posts', `squido-${postId}.${config.sourcesExt}`), postContents);
 
     // Update post list
-    const sourceFiles = await readPosts();
-    await compilePosts(sourceFiles);
+    await compilePosts();
+
     res.status(200).json({
         id: postId
     });
@@ -88,7 +95,7 @@ Hello world
 
 // Deletes a post
 router.post('/squido/delete', async (req, res) => {
-    const posts = process.postList;
+    const posts = process.posts;
     const postIndex = _.findIndex(posts, (o) => { return o.id === req.body.postId; });
     const post = posts[postIndex];
 
@@ -101,22 +108,28 @@ router.post('/squido/delete', async (req, res) => {
     fs.unlinkSync(post.filename);
 
     // Update post list
-    const sourceFiles = await readPosts();
-    await compilePosts(sourceFiles);
+    await compilePosts();
+
     res.status(200).json({});
 });
 
 // Saves changes to a post
 router.post('/squido/save', async (req, res) => {
-    const posts = process.postList;
-    const postIndex = _.findIndex(posts, (o) => { return o.id === req.body.postId; });
-    const post = posts[postIndex];
+    const posts = process.posts;
+    // const postIndex = _.findIndex(posts, (o) => { return o.id === req.body.postId; });
+    const post = posts.find(p => p.id === req.body.postId);
+
     // Check for title change and update
-    if(post.fileMeta.title !== req.body.title){
+    if(post.title !== req.body.title){
         post.fileMeta.title = req.body.title;
+        post.title = req.body.title;
     }
+
+    // Update markdown
+    post.markdown = req.body.markdown;
+
     // Check for permalink change and update
-    if(post.fileMeta.permalink !== req.body.permalink){
+    if(post.permalink !== req.body.permalink){
         // Check for duplicates
         const permalinkIndex = _.findIndex(posts, (o) => { return o.permalink === req.body.permalink; });
         if(permalinkIndex !== -1){
@@ -125,10 +138,12 @@ router.post('/squido/save', async (req, res) => {
             return;
         }
         post.fileMeta.permalink = req.body.permalink;
+        post.permalink = req.body.permalink;
     }
     // Check for description change and update
-    if(post.fileMeta.description !== req.body.description){
+    if(post.description !== req.body.description){
         post.fileMeta.description = req.body.description;
+        post.description = req.body.description;
     }
     const meta = yaml.dump(post.fileMeta);
     const updatedPost =
@@ -139,25 +154,38 @@ ${meta.trim()}
 ${req.body.markdown}
 `;
     try{
-        // Update values to memory
-        process.postList[postIndex].markdown = req.body.markdown;
-        process.postList[postIndex].title = req.body.title;
-        process.postList[postIndex].permalink = req.body.permalink;
-        process.postList[postIndex].description = req.body.description;
+        // Create updated object
+        const updatedPostObj = {
+            id: post.id,
+            title: post.title,
+            permalink: post.permalink,
+            markdown: post.markdown,
+            description: post.description
+        };
+
         // Check for a temp post and rename file to permalink on first update
         if(path.basename(post.filename).substring(0, 7) === 'squido-'){
             const fileParse = path.parse(post.filename);
             const newName = path.join(fileParse.dir, `${req.body.permalink}${fileParse.ext}`);
             // Rename our file
             fs.renameSync(post.filename, newName);
-            // Write updates to new file
-            process.postList[postIndex].filename = newName;
+
+            // Update post list
+            await compilePosts();
+
+            updatedPostObj.filename = newName;
+
+            // Write updates to file
             fs.writeFileSync(newName, updatedPost);
-            res.status(200).json(process.postList[postIndex]);
+            res.status(200).json(updatedPostObj);
             return;
         }
+        // Update post list
+        await compilePosts();
+
+        // Write updates to file
         fs.writeFileSync(post.filename, updatedPost);
-        res.status(200).json(process.postList[postIndex]);
+        res.status(200).json(updatedPostObj);
     }catch(ex){
         console.log(chalk.red(`Error saving post: ${ex}`));
         res.status(400).json({});

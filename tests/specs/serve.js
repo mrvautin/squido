@@ -3,13 +3,13 @@ const {
 } = require('ava');
 const request = require('supertest');
 const h = require('../helper');
-const { readPosts } = require('../../lib/source');
+const { compilePosts } = require('../../lib/source');
 const server = require('../../lib/serve');
 let app;
 
 test.before(async t => {
-    // Populate process.postList for tests
-    await readPosts();
+    // Populate process.post for tests
+    await compilePosts();
     app = await server.start();
 });
 
@@ -118,11 +118,11 @@ test('Update existing post', async t => {
     // Run build and clean
     await h.exec(`${h.rootPath}/cli.js build -c`);
 
-    const post = process.postList[0];
+    const post = process.posts[0];
 
     const updatedPost = {
         postId: post.id,
-        tile: 'new title',
+        title: 'new title',
         permalink: 'new-permalink',
         markdown: 'some body markdown text',
         description: 'new description'
@@ -149,7 +149,7 @@ test('Delete existing post', async t => {
     // Run build and clean
     await h.exec(`${h.rootPath}/cli.js build -c`);
 
-    const post = process.postList[0];
+    const post = process.posts[0];
 
     const response = await request(app)
     .post('/squido/delete')

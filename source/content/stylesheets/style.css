@@ -50,7 +50,7 @@ a:hover{
     font-weight: 700;
 }
 
-h1, h2{
+h1, h2, h3, h4{
     color: #264653 !important;
     font-weight: 700; 
 }
@@ -63,6 +63,10 @@ h1, h2{
 
 main > .container {
     padding: 60px 15px 0;
+}
+
+.related-card-title{
+    min-height: 100px;
 }
 
 .footer {
