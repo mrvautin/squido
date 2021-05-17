@@ -28,7 +28,7 @@ const {
     sitemap,
     rssfeed
 } = require('./lib/feeds');
-const { compilePosts } = require('./lib/source');
+const { compilePosts, indexPosts } = require('./lib/source');
 const { minifyJs, minifyCss } = require('./lib/minify');
 
 // Setup CLI
@@ -129,6 +129,7 @@ program
 
                 // If a post, build
                 if(filedir === `${config.sourceDir}/posts`){
+                    await indexPosts();
                     await buildPost(file);
                     return;
                 }
