@@ -12,7 +12,7 @@ const h = require('../helper');
 test('Run build command', async t => {
     let cmd = '';
     try{
-        cmd = await h.exec(`${h.rootPath}/cli.js build`);
+        cmd = await h.exec(`node ${h.rootPath}/cli.js build`);
     }catch(ex){
         console.log('Ex', ex);
     }
@@ -24,7 +24,7 @@ test('Run build with clean', async t => {
     let cmd = '';
     let cleanString = '';
     try{
-        cmd = await h.exec(`${h.rootPath}/cli.js build -c`);
+        cmd = await h.exec(`node ${h.rootPath}/cli.js build -c`);
         cleanString = `Cleaned: ${config.buildDir}`;
     }catch(ex){
         console.log('Ex', ex);
@@ -37,7 +37,7 @@ test('Run build with clean', async t => {
 test('Run build - check output', async t => {
     // Run build and clean
     try{
-        await h.exec(`${h.rootPath}/cli.js build -c`);
+        await h.exec(`node ${h.rootPath}/cli.js build -c`);
     }catch(ex){
         console.log('Ex', ex);
     }
@@ -53,7 +53,7 @@ test('Run build - check output', async t => {
 test('Run build - check for a post', async t => {
     // Run build and clean
     try{
-        await h.exec(`${h.rootPath}/cli.js build -c`);
+        await h.exec(`node ${h.rootPath}/cli.js build -c`);
     }catch(ex){
         console.log('Ex', ex);
     }
@@ -73,7 +73,7 @@ test('Run build - check for a post', async t => {
 test('Run build - check for a post template', async t => {
     // Run build and clean
     try{
-        await h.exec(`${h.rootPath}/cli.js build -c`);
+        await h.exec(`node ${h.rootPath}/cli.js build -c`);
     }catch(ex){
         console.log('Ex', ex);
     }
@@ -110,7 +110,7 @@ template: some-template-path-doesnt-exist.hbs
     // Run build
     let cmd = '';
     try{
-        cmd = await h.exec(`${h.rootPath}/cli.js build -c`);
+        cmd = await h.exec(`node ${h.rootPath}/cli.js build -c`);
     }catch(ex){
         console.log('Ex', ex);
     }
@@ -133,7 +133,7 @@ template: some-template-path-doesnt-exist.hbs
 test('Run build - postBuild zip', async t => {
     // Run build and clean
     try{
-        await h.exec(`${h.rootPath}/cli.js build -c`);
+        await h.exec(`node ${h.rootPath}/cli.js build -c`);
     }catch(ex){
         console.log('Ex', ex);
     }

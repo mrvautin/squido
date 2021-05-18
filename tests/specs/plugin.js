@@ -10,7 +10,7 @@ test('Run build - check testplugin output', async t => {
     let cmd = '';
     let cleanString = '';
     try{
-        cmd = await h.exec(`${h.rootPath}/cli.js build -c`);
+        cmd = await h.exec(`node ${h.rootPath}/cli.js build -c`);
         cleanString = `Cleaned: ${config.buildDir}`;
     }catch(ex){
         console.log('Ex', ex);
@@ -26,7 +26,7 @@ test('Run build - ensure dud plugins are handled', async t => {
     let cmd = '';
     let cleanString = '';
     try{
-        cmd = await h.exec(`${h.rootPath}/cli.js build -c`);
+        cmd = await h.exec(`node ${h.rootPath}/cli.js build -c`);
         cleanString = `Cleaned: ${config.buildDir}`;
     }catch(ex){
         console.log('Ex', ex);

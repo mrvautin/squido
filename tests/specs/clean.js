@@ -7,7 +7,7 @@ const config = getConfig();
 const h = require('../helper');
 
 test('Run clean command', async t => {
-    const cmd = await h.exec(`${h.rootPath}/cli.js build -c`);
+    const cmd = await h.exec(`node ${h.rootPath}/cli.js build -c`);
 
     const cleanString = `Cleaned: ${config.buildDir}`;
 
@@ -16,7 +16,7 @@ test('Run clean command', async t => {
 
 test('Run clean - check build dir is empty', async t => {
     // Run build and clean
-    await h.exec(`${h.rootPath}/cli.js clean`);
+    await h.exec(`node ${h.rootPath}/cli.js clean`);
 
     const buildFiles = await glob(`${config.buildDir}/*/**`);
 
