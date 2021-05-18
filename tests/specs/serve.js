@@ -15,7 +15,7 @@ test.before(async t => {
 
 test('Run serve - Check index', async t => {
     // Run build and clean
-    await h.exec(`${h.rootPath}/cli.js build -c`);
+    await h.exec(`node ${h.rootPath}/cli.js build -c`);
 
     const response = await request(app)
     .get('/');
@@ -24,7 +24,7 @@ test('Run serve - Check index', async t => {
 
 test('Run serve - Check 404', async t => {
     // Run build and clean
-    await h.exec(`${h.rootPath}/cli.js build -c`);
+    await h.exec(`node ${h.rootPath}/cli.js build -c`);
 
     const response = await request(app)
     .get('/gdgfgdf');
@@ -33,7 +33,7 @@ test('Run serve - Check 404', async t => {
 
 test('Check sitemap', async t => {
     // Run build and clean
-    await h.exec(`${h.rootPath}/cli.js build -c`);
+    await h.exec(`node ${h.rootPath}/cli.js build -c`);
 
     const response = await request(app)
     .get('/sitemap.xml');
@@ -42,7 +42,7 @@ test('Check sitemap', async t => {
 
 test('Check json feed', async t => {
     // Run build and clean
-    await h.exec(`${h.rootPath}/cli.js build -c`);
+    await h.exec(`node ${h.rootPath}/cli.js build -c`);
 
     const response = await request(app)
     .get('/json');
@@ -51,7 +51,7 @@ test('Check json feed', async t => {
 
 test('Check atom feed', async t => {
     // Run build and clean
-    await h.exec(`${h.rootPath}/cli.js build -c`);
+    await h.exec(`node ${h.rootPath}/cli.js build -c`);
 
     const response = await request(app)
     .get('/atom');
@@ -60,7 +60,7 @@ test('Check atom feed', async t => {
 
 test('Check rss feed', async t => {
     // Run build and clean
-    await h.exec(`${h.rootPath}/cli.js build -c`);
+    await h.exec(`node ${h.rootPath}/cli.js build -c`);
 
     const response = await request(app)
     .get('/rss');
@@ -69,7 +69,7 @@ test('Check rss feed', async t => {
 
 test('Check admin index at /squido', async t => {
     // Run build and clean
-    await h.exec(`${h.rootPath}/cli.js build -c`);
+    await h.exec(`node ${h.rootPath}/cli.js build -c`);
 
     const response = await request(app)
     .get('/squido/');
@@ -78,7 +78,7 @@ test('Check admin index at /squido', async t => {
 
 test('Create new post', async t => {
     // Run build and clean
-    await h.exec(`${h.rootPath}/cli.js build -c`);
+    await h.exec(`node ${h.rootPath}/cli.js build -c`);
 
     const response = await request(app)
     .post('/squido/create');
@@ -88,7 +88,7 @@ test('Create new post', async t => {
 
 test('Search term', async t => {
     // Run build and clean
-    await h.exec(`${h.rootPath}/cli.js build -c`);
+    await h.exec(`node ${h.rootPath}/cli.js build -c`);
 
     const response = await request(app)
     .post('/squido/search')
@@ -102,7 +102,7 @@ test('Search term', async t => {
 
 test('Search term - not found', async t => {
     // Run build and clean
-    await h.exec(`${h.rootPath}/cli.js build -c`);
+    await h.exec(`node ${h.rootPath}/cli.js build -c`);
 
     const response = await request(app)
     .post('/squido/search')
@@ -116,7 +116,7 @@ test('Search term - not found', async t => {
 
 test('Update existing post', async t => {
     // Run build and clean
-    await h.exec(`${h.rootPath}/cli.js build -c`);
+    await h.exec(`node ${h.rootPath}/cli.js build -c`);
 
     const post = process.posts[0];
 
@@ -147,7 +147,7 @@ test('Update existing post', async t => {
 
 test('Delete existing post', async t => {
     // Run build and clean
-    await h.exec(`${h.rootPath}/cli.js build -c`);
+    await h.exec(`node ${h.rootPath}/cli.js build -c`);
 
     const post = process.posts[0];
 
