@@ -2,7 +2,7 @@ const {
     serial: test
 } = require('ava');
 const glob = require('globby');
-const { getConfig } = require('../../lib/common');
+const { getConfig, globPath } = require('../../lib/common');
 const config = getConfig();
 const h = require('../helper');
 
@@ -18,7 +18,7 @@ test('Run clean - check build dir is empty', async t => {
     // Run build and clean
     await h.exec(`node ${h.rootPath}/cli.js clean`);
 
-    const buildFiles = await glob(`${config.buildDir}/*/**`);
+    const buildFiles = await glob(`${globPath(config.buildDir)}/*/**`);
 
     t.deepEqual(buildFiles.length, 0);
 });

@@ -5,7 +5,7 @@ const path = require('path');
 const fs = require('fs');
 const glob = require('globby');
 const AdmZip = require('adm-zip');
-const { getMeta, getConfig } = require('../../lib/common');
+const { getMeta, getConfig, globPath } = require('../../lib/common');
 const config = getConfig();
 const h = require('../helper');
 
@@ -59,7 +59,7 @@ test('Run build - check for a post', async t => {
     }
 
     // Get posts
-    const posts = await glob(`${h.postPath}/*.${config.sourcesExt || 'markdown'}`);
+    const posts = await glob(`${globPath(h.postPath)}/*.${config.sourcesExt || 'markdown'}`);
 
     // Get random post index
     const postIndex = Math.ceil(Math.random() * posts.length - 1);
@@ -143,8 +143,8 @@ test('Run build - postBuild zip', async t => {
 
     // Get all files in the build dir
     const buildFiles = await glob([
-        `${config.buildDir}/**/*`,
-        `!${config.buildDir}/build.zip`
+        `${globPath(config.buildDir)}/**/*`,
+        `!${globPath(config.buildDir)}/build.zip`
     ]);
 
     // Read our zip to get files
