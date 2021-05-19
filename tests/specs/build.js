@@ -5,7 +5,8 @@ const path = require('path');
 const fs = require('fs');
 const glob = require('globby');
 const AdmZip = require('adm-zip');
-const { getMeta, getConfig, globPath } = require('../../lib/common');
+const { getConfig, globPath } = require('../../lib/common');
+const { compilePosts } = require('../../lib/source');
 const config = getConfig();
 const h = require('../helper');
 
@@ -58,14 +59,17 @@ test('Run build - check for a post', async t => {
         console.log('Ex', ex);
     }
 
+    // Compile our posts
+    const generatedPosts = await compilePosts();
+
     // Get posts
-    const posts = await glob(`${globPath(h.postPath)}/*.${config.sourcesExt || 'markdown'}`);
+    const posts = generatedPosts.posts;
 
     // Get random post index
     const postIndex = Math.ceil(Math.random() * posts.length - 1);
 
     // Get the post meta
-    const postMeta = getMeta(posts[postIndex]);
+    const postMeta = posts[postIndex];
 
     t.deepEqual(await h.exists(path.join(config.buildDir, postMeta.permalink, 'index.html')), true);
 });
