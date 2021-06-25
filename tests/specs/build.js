@@ -4,6 +4,7 @@ const {
 const path = require('path');
 const fs = require('fs');
 const glob = require('globby');
+const _ = require('lodash');
 const AdmZip = require('adm-zip');
 const { getConfig, globPath } = require('../../lib/common');
 const { compilePosts } = require('../../lib/source');
@@ -72,6 +73,29 @@ test('Run build - check for a post', async t => {
     const postMeta = posts[postIndex];
 
     t.deepEqual(await h.exists(path.join(config.buildDir, postMeta.permalink, 'index.html')), true);
+});
+
+test.only('Run build - check for content', async t => {
+    // Run build and clean
+    try{
+        await h.exec(`node ${h.rootPath}/cli.js build -c`);
+    }catch(ex){
+        console.log('Ex', ex);
+    }
+
+    // Get content files
+    const contentSourceFiles = await glob([
+        `${globPath(config.sourceDir)}/content/**/*`
+    ]);
+
+    // Fix paths and check build file exists
+    for(const sourceFile in contentSourceFiles){
+        const filename = path.normalize(contentSourceFiles[sourceFile]);
+        const parsed = path.parse(filename);
+        const fileRawDir = parsed.dir.replace(config.sourceDir, '');
+        const fixedFilePath = path.join(fileRawDir, parsed.base);
+        t.deepEqual(await h.exists(path.join(config.buildDir, fixedFilePath)), true);
+    }
 });
 
 test('Run build - check for a post template', async t => {
