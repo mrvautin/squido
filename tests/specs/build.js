@@ -75,7 +75,7 @@ test('Run build - check for a post', async t => {
     t.deepEqual(await h.exists(path.join(config.buildDir, postMeta.permalink, 'index.html')), true);
 });
 
-test.only('Run build - check for content', async t => {
+test('Run build - check for content', async t => {
     // Run build and clean
     try{
         await h.exec(`node ${h.rootPath}/cli.js build -c`);
