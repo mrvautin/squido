@@ -11,10 +11,13 @@
 `squido` has baked in everything you need to run and host a website. You simply do the writing and customisation of style and layout. 
 
 ```bash
-# with npm
+# From Github (preferred for latest version)
+npm i -g https://github.com/mrvautin/squido.git
+
+# From npm
 npm install -g squido
 
-# or with Yarn
+# With Yarn
 yarn global add squido
 ```
 
