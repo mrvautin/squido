@@ -52,6 +52,7 @@
   "dependencies": {
     "adm-zip": "^0.5.5",
     "chalk": "^4.1.0",
+    "cheerio": "^1.0.0-rc.10",
     "chokidar": "^3.5.1",
     "clean-css": "^5.1.2",
     "commander": "^2.6.0",
