@@ -78,6 +78,7 @@
     "node-fetch": "^2.6.1",
     "sitemap": "^6.4.0",
     "slugify": "^1.5.0",
+    "smart-matter": "^1.0.1",
     "string-strip-html": "^8.2.7",
     "turndown": "^7.0.0",
     "uglify-js": "^3.13.3",
