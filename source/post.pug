@@ -1,0 +1,11 @@
+.row
+  .col-md-8.offset-md-2.mb-5
+    .mt-5
+      h1 #{title}
+      .post-body !{body}
+if tags
+  .row
+    .col-md-8.offset-md-2.mb-3
+        h5.text-muted Tags:
+        each tag in tags
+          a(href=`/tag/${tag}/`)  #{tag} |

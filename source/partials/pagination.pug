@@ -1,0 +1,10 @@
+if config.pagination
+  if shouldPaginate
+    .row
+      .col-12.mb-4.text-center
+        p.text-muted Page #{page} of #{pages}
+        .btn-group(role='group')
+          if prevPage
+            a.btn.btn-outline-secondary(href=`/page/${prevPage}/`) &laquo; Prev Page
+          if nextPage
+            a.btn.btn-outline-secondary(href=`/page/${nextPage}/`) Next Page &raquo;
