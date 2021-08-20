@@ -98,7 +98,41 @@ test('Run build - check for content', async t => {
     }
 });
 
-test('Run build - check for a post template', async t => {
+test('Run build - custom post template', async t => {
+    const postContents = `---
+title: Custom template
+permalink: custom-template
+description: Custom template
+date: '2021-03-18 10:30:00'
+template: post-diff.hbs
+---
+
+## A Custom template
+`;
+
+    // Set out custom post path
+    const customPostPath = path.join(config.sourceDir, 'posts', 'custom-template.markdown');
+    // Write out custom post
+    fs.writeFileSync(customPostPath, postContents);
+
+    // Contents of our different post template file
+    const templateContents = `<h1>Diff post template</h1>
+<div class="row">
+    <div class="col-md-8 offset-md-2 mb-5">
+        <div class="mt-5">
+            <h1>{{title}}</h1>
+            {{{body}}}
+        </div>
+    </div>
+</div>`;
+
+    // Write a custom template for this post
+    const templateFile = path.join(config.sourceDir, 'post-diff.hbs');
+    fs.writeFileSync(templateFile, templateContents);
+
+    // Check file exists
+    t.deepEqual(await h.exists(templateFile), true);
+
     // Run build and clean
     try{
         await h.exec(`node ${h.rootPath}/cli.js build -c`);
@@ -106,16 +140,15 @@ test('Run build - check for a post template', async t => {
         console.log('Ex', ex);
     }
 
-    const filePath = path.join(config.buildDir, 'ibi-talia-non-caruit-thisbes-vitae-thyrsos', 'index.html');
-
-    // Check file exists
-    t.deepEqual(await h.exists(filePath), true);
-
-    // Read file
-    const fileContents = fs.readFileSync(filePath, 'utf8');
+    const buildFilePath = path.join(config.buildDir, 'custom-template', 'index.html');
+    const customPostContents = fs.readFileSync(buildFilePath, 'utf-8');
 
     // Check for <h1> tag in file
-    t.deepEqual(fileContents.includes('<h1>Diff post template</h1>'), true);
+    t.deepEqual(customPostContents.includes('<h1>Diff post template</h1>'), true);
+
+    // Remove temp files
+    fs.unlinkSync(customPostPath);
+    fs.unlinkSync(templateFile);
 });
 
 test('Run build - template doesnt exist', async t => {
@@ -142,11 +175,6 @@ template: some-template-path-doesnt-exist.hbs
     }catch(ex){
         console.log('Ex', ex);
     }
-
-    const filePath = path.join(config.buildDir, 'ibi-talia-non-caruit-thisbes-vitae-thyrsos', 'index.html');
-
-    // Check file exists
-    t.deepEqual(await h.exists(filePath), true);
 
     // Check for build complete string
     t.deepEqual(cmd.includes('[Build complete]'), true);
