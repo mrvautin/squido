@@ -4,11 +4,9 @@ const {
 const path = require('path');
 const fs = require('fs');
 const glob = require('globby');
-const _ = require('lodash');
 const AdmZip = require('adm-zip');
-const { getConfig, globPath } = require('../../lib/common');
+const { globPath } = require('../../lib/common');
 const { compilePosts } = require('../../lib/source');
-const config = getConfig();
 const h = require('../helper');
 
 test('Run build command', async t => {
@@ -27,7 +25,7 @@ test('Run build with clean', async t => {
     let cleanString = '';
     try{
         cmd = await h.exec(`node ${h.rootPath}/cli.js build -c`);
-        cleanString = `Cleaned: ${config.buildDir}`;
+        cleanString = `Cleaned: ${process.config.buildDir}`;
     }catch(ex){
         console.log('Ex', ex);
     }
@@ -44,12 +42,12 @@ test('Run build - check output', async t => {
         console.log('Ex', ex);
     }
 
-    t.deepEqual(await h.exists(path.join(config.buildDir, 'index.html')), true);
-    t.deepEqual(await h.exists(path.join(config.buildDir, '404.html')), true);
-    t.deepEqual(await h.exists(path.join(config.buildDir, 'sitemap.xml')), true);
-    t.deepEqual(await h.exists(path.join(config.buildDir, 'json')), true);
-    t.deepEqual(await h.exists(path.join(config.buildDir, 'rss')), true);
-    t.deepEqual(await h.exists(path.join(config.buildDir, 'atom')), true);
+    t.deepEqual(await h.exists(path.join(process.config.buildDir, 'index.html')), true);
+    t.deepEqual(await h.exists(path.join(process.config.buildDir, '404.html')), true);
+    t.deepEqual(await h.exists(path.join(process.config.buildDir, 'sitemap.xml')), true);
+    t.deepEqual(await h.exists(path.join(process.config.buildDir, 'json')), true);
+    t.deepEqual(await h.exists(path.join(process.config.buildDir, 'rss')), true);
+    t.deepEqual(await h.exists(path.join(process.config.buildDir, 'atom')), true);
 });
 
 test('Run build - check for a post', async t => {
@@ -72,7 +70,7 @@ test('Run build - check for a post', async t => {
     // Get the post meta
     const postMeta = posts[postIndex];
 
-    t.deepEqual(await h.exists(path.join(config.buildDir, postMeta.permalink, 'index.html')), true);
+    t.deepEqual(await h.exists(path.join(process.config.buildDir, postMeta.permalink, 'index.html')), true);
 });
 
 test('Run build - check for content', async t => {
@@ -85,16 +83,16 @@ test('Run build - check for content', async t => {
 
     // Get content files
     const contentSourceFiles = await glob([
-        `${globPath(config.sourceDir)}/content/**/*`
+        `${globPath(process.config.sourceDir)}/content/**/*`
     ]);
 
     // Fix paths and check build file exists
     for(const sourceFile in contentSourceFiles){
         const filename = path.normalize(contentSourceFiles[sourceFile]);
         const parsed = path.parse(filename);
-        const fileRawDir = parsed.dir.replace(config.sourceDir, '');
+        const fileRawDir = parsed.dir.replace(process.config.sourceDir, '');
         const fixedFilePath = path.join(fileRawDir, parsed.base);
-        t.deepEqual(await h.exists(path.join(config.buildDir, fixedFilePath)), true);
+        t.deepEqual(await h.exists(path.join(process.config.buildDir, fixedFilePath)), true);
     }
 });
 
@@ -111,7 +109,7 @@ template: post-diff.hbs
 `;
 
     // Set out custom post path
-    const customPostPath = path.join(config.sourceDir, 'posts', 'custom-template.markdown');
+    const customPostPath = path.join(process.config.sourceDir, 'posts', 'custom-template.markdown');
     // Write out custom post
     fs.writeFileSync(customPostPath, postContents);
 
@@ -127,7 +125,7 @@ template: post-diff.hbs
 </div>`;
 
     // Write a custom template for this post
-    const templateFile = path.join(config.sourceDir, 'post-diff.hbs');
+    const templateFile = path.join(process.config.sourceDir, 'post-diff.hbs');
     fs.writeFileSync(templateFile, templateContents);
 
     // Check file exists
@@ -140,7 +138,7 @@ template: post-diff.hbs
         console.log('Ex', ex);
     }
 
-    const buildFilePath = path.join(config.buildDir, 'custom-template', 'index.html');
+    const buildFilePath = path.join(process.config.buildDir, 'custom-template', 'index.html');
     const customPostContents = fs.readFileSync(buildFilePath, 'utf-8');
 
     // Check for <h1> tag in file
@@ -162,8 +160,8 @@ template: some-template-path-doesnt-exist.hbs
 
 ## a dodgy template file
 `;
-    const filepath = path.join(config.sourceDir, 'posts', 'a-dodgy-template-file.markdown');
-    const dogyTemplatePath = path.join(config.sourceDir, 'some-template-path-doesnt-exist.hbs');
+    const filepath = path.join(process.config.sourceDir, 'posts', 'a-dodgy-template-file.markdown');
+    const dogyTemplatePath = path.join(process.config.sourceDir, 'some-template-path-doesnt-exist.hbs');
 
     // write new post
     fs.writeFileSync(filepath, filecontents);
@@ -195,16 +193,16 @@ test('Run build - postBuild zip', async t => {
     }
 
     // Check for zip file
-    t.deepEqual(await h.exists(path.join(config.buildDir, 'build.zip')), true);
+    t.deepEqual(await h.exists(path.join(process.config.buildDir, 'build.zip')), true);
 
     // Get all files in the build dir
     const buildFiles = await glob([
-        `${globPath(config.buildDir)}/**/*`,
-        `!${globPath(config.buildDir)}/build.zip`
+        `${globPath(process.config.buildDir)}/**/*`,
+        `!${globPath(process.config.buildDir)}/build.zip`
     ]);
 
     // Read our zip to get files
-    const zip = new AdmZip(path.join(config.buildDir, 'build.zip'));
+    const zip = new AdmZip(path.join(process.config.buildDir, 'build.zip'));
     const zipEntries = await zip.getEntries();
 
     // Check the number of files in /build dir matches the Zip

@@ -3,7 +3,8 @@ const chalk = require('chalk');
 const path = require('path');
 const fs = require('fs');
 const { getConfig, runPlugins, runPostBuild, runSetupNew } = require('./lib/common');
-const config = getConfig();
+// Setup the config
+getConfig();
 
 // Modules
 const { Command } = require('commander');
@@ -115,7 +116,7 @@ program
 
         // If watch flag
         if(options && options.watch){
-            const watcher = chokidar.watch(config.sourceDir, {
+            const watcher = chokidar.watch([process.config.sourceDir, path.join(process.cwd(), 'config.js')], {
                 ignored: /(^|[/\\])\../,
                 persistent: true,
                 ignoreInitial: true,
@@ -128,25 +129,30 @@ program
                 const filedir = path.dirname(file);
 
                 // If a post, build
-                if(filedir === `${config.sourceDir}/posts`){
+                if(filedir === `${process.config.sourceDir}/posts`){
                     await indexPosts();
                     await buildPost(file);
                     return;
                 }
 
                 // If a layout, run a full build
-                if(filedir === `${config.sourceDir}/layouts`){
+                if(filedir === `${process.config.sourceDir}/layouts`){
                     await compilePosts();
                     await buildIndex();
                     return;
                 }
 
                 // If index, build index
-                if(path.extname(file) === `.${config.templateEngine}`){
-                    if(path.basename(file) === `index.${config.templateEngine}`){
+                if(path.extname(file) === `.${process.config.templateEngine}`){
+                    if(path.basename(file) === `index.${process.config.templateEngine}`){
                         await buildIndex();
                         return;
                     }
+                    await runBuild();
+                }
+
+                // Rebuild on config.js edit
+                if(path.basename(file) === 'config.js'){
                     await runBuild();
                 }
 
@@ -172,10 +178,12 @@ program
     });
 
 const runBuild = async () => {
-    console.log(chalk.yellow(`[Building environment: ${config.environment}]`));
+    // Update config
+    getConfig();
+    console.log(chalk.yellow(`[Building environment: ${process.config.environment}]`));
     await compilePosts();
     // If Pagination turned on
-    if(config.pagination){
+    if(process.config.pagination){
         await buildPagination();
     }
     await buildIndex();
@@ -190,12 +198,12 @@ const runBuild = async () => {
     console.log(chalk.green('[Build complete]'));
 
     // Run plugins if any configured
-    if(config.plugins){
+    if(process.config.plugins){
         await runPlugins();
     }
 
     // Run post build tasks
-    if(config.postBuild){
+    if(process.config.postBuild){
         await runPostBuild();
     }
 };

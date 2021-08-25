@@ -1,6 +1,6 @@
 const config = {
     test: {
-        name: 'squido',
+        name: 'squido-changed',
         description: 'This is the blog description',
         twitterHandle: '@mrvautin',
         baseUrl: 'http://localhost:4965',
@@ -35,13 +35,15 @@ const config = {
         ]
     },
     development: {
-        name: 'squido',
+        name: 'squido-changed',
         description: 'This is the blog description',
         twitterHandle: '@mrvautin',
         baseUrl: 'http://localhost:4965',
         sourcesExt: 'markdown',
         templateEngine: 'hbs',
-        templateConfig: {},
+        templateConfig: {
+            basedir: __dirname
+        },
         sourceDir: 'source',
         buildDir: 'build',
         summaryLength: 250,
@@ -56,7 +58,7 @@ const config = {
         ]
     },
     production: {
-        name: 'squido',
+        name: 'squido-changed',
         description: 'This is the blog description',
         twitterHandle: '@mrvautin',
         baseUrl: 'http://example.com',

@@ -5,9 +5,7 @@ const yaml = require('js-yaml');
 const chalk = require('chalk');
 const uniqid = require('uniqid');
 const _ = require('lodash');
-const { getConfig } = require('../../lib/common');
 const { compilePosts } = require('../../lib/source');
-const config = getConfig();
 const router = express.Router();
 
 // The admin index, shows first post
@@ -32,7 +30,7 @@ router.get('/squido/:post', async (req, res) => {
         title: 'squido - Admin',
         posts,
         post,
-        config
+        config: process.config
     });
 });
 
@@ -68,7 +66,7 @@ date: ${new Date().toISOString()}
 Hello world
 `;
     // Save our new file
-    fs.writeFileSync(path.join(config.sourceDir, 'posts', `squido-${postId}.${config.sourcesExt}`), postContents);
+    fs.writeFileSync(path.join(process.config.sourceDir, 'posts', `squido-${postId}.${process.config.sourcesExt}`), postContents);
 
     // Update post list
     await compilePosts();

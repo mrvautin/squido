@@ -3,7 +3,8 @@ const path = require('path');
 const fs = require('fs');
 const ex = util.promisify(require('child_process').exec);
 const { getConfig } = require('../lib/common');
-const config = getConfig();
+// Setup the config
+getConfig();
 
 const exec = async(cmd) => {
     const { stdout, stderr } = await ex(cmd);
@@ -30,6 +31,6 @@ module.exports = {
     exists,
     greaterThan,
     rootPath: path.join(process.cwd()),
-    postPath: path.join(config.sourceDir, 'posts'),
-    config
+    postPath: path.join(process.config.sourceDir, 'posts'),
+    config: process.config
 };

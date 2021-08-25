@@ -1,8 +1,6 @@
 const {
     serial: test
 } = require('ava');
-const { getConfig } = require('../../lib/common');
-const config = getConfig();
 const h = require('../helper');
 
 test('Run build - check testplugin output', async t => {
@@ -11,14 +9,14 @@ test('Run build - check testplugin output', async t => {
     let cleanString = '';
     try{
         cmd = await h.exec(`node ${h.rootPath}/cli.js build -c`);
-        cleanString = `Cleaned: ${config.buildDir}`;
+        cleanString = `Cleaned: ${process.config.buildDir}`;
     }catch(ex){
         console.log('Ex', ex);
     }
 
     t.deepEqual(cmd.includes(cleanString), true);
     t.deepEqual(cmd.includes('[Build complete]'), true);
-    t.deepEqual(cmd.includes(`testplugin ${JSON.stringify(config.plugins[0].options)}`), true);
+    t.deepEqual(cmd.includes(`testplugin ${JSON.stringify(process.config.plugins[0].options)}`), true);
 });
 
 test('Run build - ensure dud plugins are handled', async t => {
@@ -27,7 +25,7 @@ test('Run build - ensure dud plugins are handled', async t => {
     let cleanString = '';
     try{
         cmd = await h.exec(`node ${h.rootPath}/cli.js build -c`);
-        cleanString = `Cleaned: ${config.buildDir}`;
+        cleanString = `Cleaned: ${process.config.buildDir}`;
     }catch(ex){
         console.log('Ex', ex);
     }
