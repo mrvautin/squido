@@ -1,6 +1,6 @@
 const config = {
     test: {
-        name: 'squido-changed',
+        name: 'squido',
         description: 'This is the blog description',
         twitterHandle: '@mrvautin',
         baseUrl: 'http://localhost:4965',
@@ -35,7 +35,7 @@ const config = {
         ]
     },
     development: {
-        name: 'squido-changed',
+        name: 'squido',
         description: 'This is the blog description',
         twitterHandle: '@mrvautin',
         baseUrl: 'http://localhost:4965',
