@@ -5,6 +5,14 @@ const config = {
         twitterHandle: '@mrvautin',
         baseUrl: 'http://localhost:4965',
         sourcesExt: 'markdown',
+        templateEngine: 'hbs',
+        templateConfig: {
+            helpers: {
+                printStuff: () => {
+                    return '<h1>Print stuff</h1>';
+                }
+            }
+        },
         sourceDir: 'source',
         buildDir: 'build',
         summaryLength: 250,
@@ -41,9 +49,6 @@ const config = {
         baseUrl: 'http://localhost:4965',
         sourcesExt: 'markdown',
         templateEngine: 'hbs',
-        templateConfig: {
-            basedir: __dirname
-        },
         sourceDir: 'source',
         buildDir: 'build',
         summaryLength: 250,

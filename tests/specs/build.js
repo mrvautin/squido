@@ -96,6 +96,24 @@ test('Run build - check for content', async t => {
     }
 });
 
+test('Run build - check for custom helper', async t => {
+    // Run build and clean
+    try{
+        await h.exec(`node ${h.rootPath}/cli.js build -c`);
+    }catch(ex){
+        console.log('Ex', ex);
+    }
+
+    // Get the index file path
+    const indexFile = path.join(process.config.buildDir, 'index.html');
+
+    // Read in the index file
+    const indexFileContent = fs.readFileSync(indexFile, 'utf-8');
+
+    // Check for custom helper content
+    t.deepEqual(indexFileContent.includes('<h1>Print stuff</h1>'), true);
+});
+
 test('Run build - custom post template', async t => {
     const postContents = `---
 title: Custom template
