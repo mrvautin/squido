@@ -15,6 +15,7 @@ const config = {
         },
         swaggerDocs: {
             enabled: true,
+            type: 'yaml',
             swaggerFile: 'swagger.yaml'
         },
         sourceDir: 'source',
