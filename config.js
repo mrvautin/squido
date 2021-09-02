@@ -13,6 +13,10 @@ const config = {
                 }
             }
         },
+        swaggerDocs: {
+            enabled: true,
+            swaggerFile: 'swagger.yaml'
+        },
         sourceDir: 'source',
         buildDir: 'build',
         summaryLength: 250,
@@ -51,6 +55,11 @@ const config = {
         templateEngine: 'hbs',
         sourceDir: 'source',
         buildDir: 'build',
+        swaggerDocs: {
+            enabled: true,
+            type: 'yaml',
+            swaggerFile: 'swagger.yaml'
+        },
         summaryLength: 250,
         port: 4965,
         pagination: true,

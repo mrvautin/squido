@@ -13,6 +13,7 @@ const serve = require('./lib/serve');
 const {
     clean,
     buildIndex,
+    build404,
     rootFiles,
     buildPost,
     copyFile,
@@ -187,6 +188,7 @@ const runBuild = async () => {
         await buildPagination();
     }
     await buildIndex();
+    await build404();
     await buildTags();
     await rootFiles();
     await copyContent();
