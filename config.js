@@ -13,11 +13,18 @@ const config = {
                 }
             }
         },
-        swaggerDocs: {
-            enabled: true,
-            type: 'yaml',
-            swaggerFile: 'swagger.yaml'
-        },
+        data: [
+            {
+                name: 'swagger-yaml',
+                type: 'yaml',
+                file: 'swagger.yaml'
+            },
+            {
+                name: 'swagger-json',
+                type: 'json',
+                file: 'swagger.json'
+            }
+        ],
         sourceDir: 'source',
         buildDir: 'build',
         summaryLength: 250,
@@ -56,11 +63,13 @@ const config = {
         templateEngine: 'hbs',
         sourceDir: 'source',
         buildDir: 'build',
-        swaggerDocs: {
-            enabled: true,
-            type: 'yaml',
-            swaggerFile: 'swagger.yaml'
-        },
+        data: [
+            {
+                name: 'swagger',
+                type: 'yaml',
+                file: 'swagger.yaml'
+            }
+        ],
         summaryLength: 250,
         port: 4965,
         pagination: true,

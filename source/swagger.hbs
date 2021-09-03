@@ -1,101 +1,104 @@
 <h1>
-    
-    {{swagger.info.title}}
-  <small class="text-muted">{{swagger.info.version}}</small>
+    {{data.swagger.info.title}}
+    <small class="text-muted">{{data.swagger.info.version}}</small>
 </h1>
 
-{{swagger.info.title}}
+<p>{{{data.swagger.info.description}}}</p>
 
-<p>{{{swagger.info.description}}}</p>
+<p><a href="{{data.swagger.info.termsOfService}}">Terms of Service</a></p>
 
-<p><a href="{{swagger.info.termsOfService}}">Terms of Service</a></p>
-
-{{#if swagger.securityDefinitions}}
+{{#if data.swagger.securityDefinitions}}
 <h2>Security definitions</h2>
-{{#each swagger.securityDefinitions}}
+{{#each data.swagger.securityDefinitions}}
 <h3>{{@key}}</h3>
 {{#with @key}}
 {{#ifCond ../type '==' 'oauth2'}}
-<table class="table table-bordered">
-    <tr>
-        <th>type</th>
-        <th colspan="2">{{../../type}}</th>
-    </tr>
-{{#if ../../description}}
-    <tr>
-        <th>description</th>
-        <th colspan="2">{{../../description}}</th>
-    </tr>
-{{/if}}
-{{#if ../../authorizationUrl}}
-    <tr>
-        <th>authorizationUrl</th>
-        <th colspan="2">{{../../authorizationUrl}}</th>
-    </tr>
-{{/if}}
-{{#if ../../flow}}
-    <tr>
-        <th>flow</th>
-        <th colspan="2">{{../../flow}}</th>
-    </tr>
-{{/if}}
-{{#if ../../tokenUrl}}
-    <tr>
-        <th>tokenUrl</th>
-        <th colspan="2">{{../../tokenUrl}}</th>
-    </tr>
-{{/if}}
-{{#if ../../scopes}}
-    <tr>
-        <th>Scopes</th>
-        <th>
-        {{#each ../../scopes}}
-            <p>{{@key}} - {{this}}</p>
-        {{/each}}
-        </th>
-    </tr>     
-{{/if}}
-</table>
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <tr>
+            <th>type</th>
+            <th colspan="2">{{../../type}}</th>
+        </tr>
+    {{#if ../../description}}
+        <tr>
+            <th>description</th>
+            <th colspan="2">{{../../description}}</th>
+        </tr>
+    {{/if}}
+    {{#if ../../authorizationUrl}}
+        <tr>
+            <th>authorizationUrl</th>
+            <th colspan="2">{{../../authorizationUrl}}</th>
+        </tr>
+    {{/if}}
+    {{#if ../../flow}}
+        <tr>
+            <th>flow</th>
+            <th colspan="2">{{../../flow}}</th>
+        </tr>
+    {{/if}}
+    {{#if ../../tokenUrl}}
+        <tr>
+            <th>tokenUrl</th>
+            <th colspan="2">{{../../tokenUrl}}</th>
+        </tr>
+    {{/if}}
+    {{#if ../../scopes}}
+        <tr>
+            <th>Scopes</th>
+            <th>
+            {{#each ../../scopes}}
+                <p>{{@key}} - {{this}}</p>
+            {{/each}}
+            </th>
+        </tr>     
+    {{/if}}
+    </table>
+</div>
 {{/ifCond}}
 {{#ifCond ../type '==' 'apiKey'}}
-<table class="table table-bordered">
-    <tr>
-        <th>type</th>
-        <th colspan="2">{{../../type}}</th>
-    </tr>
-{{#if ../../description}}
-    <tr>
-        <th>description</th>
-        <th colspan="2">{{../../description}}</th>
-    </tr>
-{{/if}}
-{{#if ../../name}}
-    <tr>
-        <th>name</th>
-        <th colspan="2">{{../../name}}</th>
-    </tr>
-{{/if}}
-{{#if ../../in}}
-    <tr>
-        <th>in</th>
-        <th colspan="2">{{../../in}}</th>
-    </tr>
-{{/if}}
-</table>
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <tr>
+            <th>type</th>
+            <th colspan="2">{{../../type}}</th>
+        </tr>
+    {{#if ../../description}}
+        <tr>
+            <th>description</th>
+            <th colspan="2">{{../../description}}</th>
+        </tr>
+    {{/if}}
+    {{#if ../../name}}
+        <tr>
+            <th>name</th>
+            <th colspan="2">{{../../name}}</th>
+        </tr>
+    {{/if}}
+    {{#if ../../in}}
+        <tr>
+            <th>in</th>
+            <th colspan="2">{{../../in}}</th>
+        </tr>
+    {{/if}}
+    </table>
+</div>
 {{/ifCond}}
 {{#ifCond ../type '==' 'basic'}}
-<table class="table table-bordered">
-    <tr>
-        <th>type</th>
-        <th colspan="2">{{../../type}}</th>
-    </tr>
-{{#if ../../description}}
-    <tr>
-        <th>description</th>
-        <th colspan="2">{{../../description}}</th>
-    </tr>
-{{/if}}
-</table>
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <tr>
+            <th>type</th>
+            <th colspan="2">{{../../type}}</th>
+        </tr>
+    {{#if ../../description}}
+        <tr>
+            <th>description</th>
+            <th colspan="2">{{../../description}}</th>
+        </tr>
+    {{/if}}
+    </table>
+</div>
 {{/ifCond}}
 {{/with}}
 {{/each}}
@@ -103,7 +106,7 @@
 
 <h1>APIs</h1>
 
-{{#each swagger.paths}}
+{{#each data.swagger.paths}}
 {{#with @key}}
 {{#each ../this}}
     <div class="card card-body mb-3">
@@ -148,41 +151,42 @@
 
         <h5>Parameters</h5>
         {{#if parameters}}
-        <table class="table table-bordered">
-            <tr>
-                <th>Name</th>
-                <th>Located in</th>
-                <th>Required</th>
-                <th>Description</th>
-                <th>Default</th>
-                <th>Schema</th>
-            </tr>
-            {{#each parameters}}
-            <tr>
-                <th>{{name}}</th>
-                <td>{{in}}</td>
-                <td>{{#if required}}yes{{else}}no{{/if}}</td>
-                <td>{{description}}{{#if pattern}} (**Pattern**: `{{pattern}}`){{/if}}</td>
-                <td> - </td>
-            {{#ifCond in '==' 'body'}}
-                <td>
-                {{#ifCond schema.type '==' 'array'}}Array[<a href="{{../schema.items.$ref}}">{{basename schema.items.$ref}}</a>]{{/ifCond}}
-                {{#schema.$ref}}<a href="{{schema.$ref}}">{{basename schema.$ref}}</a> {{/schema.$ref}}
-                </td>
-            {{else}}
-                {{#ifCond type '==' 'array'}}
-                        <td>Array[{{items.type}}] ({{collectionFormat}})</td>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <tr>
+                    <th>Name</th>
+                    <th>Located in</th>
+                    <th>Required</th>
+                    <th>Description</th>
+                    <th>Default</th>
+                    <th>Schema</th>
+                </tr>
+                {{#each parameters}}
+                <tr>
+                    <th>{{name}}</th>
+                    <td>{{in}}</td>
+                    <td>{{#if required}}yes{{else}}no{{/if}}</td>
+                    <td>{{description}}{{#if pattern}} (**Pattern**: `{{pattern}}`){{/if}}</td>
+                    <td> - </td>
+                {{#ifCond in '==' 'body'}}
+                    <td>
+                    {{#ifCond schema.type '==' 'array'}}Array[<a href="{{../schema.items.$ref}}">{{basename schema.items.$ref}}</a>]{{/ifCond}}
+                    {{#schema.$ref}}<a href="{{schema.$ref}}">{{basename schema.$ref}}</a> {{/schema.$ref}}
+                    </td>
                 {{else}}
-                        <td>{{type}} {{#format}}({{format}}){{/format}}</td>
+                    {{#ifCond type '==' 'array'}}
+                            <td>Array[{{items.type}}] ({{collectionFormat}})</td>
+                    {{else}}
+                            <td>{{type}} {{#format}}({{format}}){{/format}}</td>
+                    {{/ifCond}}
                 {{/ifCond}}
-            {{/ifCond}}
-            </tr>
-            {{/each}}
-        </table>
+                </tr>
+                {{/each}}
+            </table>
+        </div>
         {{/if}}
 
         <h4>Response</h4>
-
         {{#if produces}}
         <p>
             <b>Content-Type:</b>
@@ -197,94 +201,99 @@
             </i>
         </p>
         {{/if}}
-        <table class="table table-bordered">
-            <tr>
-                <th>Status Code</th>
-                <th>Reason</th>
-                <th>Response Model</th>
-            </tr>
-            {{#each responses}}
-            <tr>
-                <td>{{@key}}</td>
-                <td>{{description}}</td>
-                <td>
-                {{#ifCond ../schema.type '==' 'array'}}
-                    Array[
-                        <a href="{{../schema.items.$ref}}">{{../schema.items.$ref}}</a>
-                    ]
-                {{else}}
-                    <a href="{{../schema.$ref}}">{{../schema.$ref}}</a>
-                {{/ifCond}}
-                </td>
-            </tr>
-            {{/each}}
-        </table>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <tr>
+                    <th>Status Code</th>
+                    <th>Reason</th>
+                    <th>Response Model</th>
+                </tr>
+                {{#each responses}}
+                <tr>
+                    <td>{{@key}}</td>
+                    <td>{{description}}</td>
+                    <td>
+                    {{#ifCond ../schema.type '==' 'array'}}
+                        Array[
+                            <a href="{{../schema.items.$ref}}">{{../schema.items.$ref}}</a>
+                        ]
+                    {{else}}
+                        <a href="{{../schema.$ref}}">{{../schema.$ref}}</a>
+                    {{/ifCond}}
+                    </td>
+                </tr>
+                {{/each}}
+            </table>
+        </div>
     </div>
 {{/each}}
 {{/with}}
 {{/each}}
 
-{{#if swagger.definitions}}
+{{#if data.swagger.definitions}}
     <div class="pb-3">
     <h1>Definitions</h1>
-    {{#each swagger.definitions}}
+    {{#each data.swagger.definitions}}
     <div class="card card-body mb-3">
         <h2 id="definitions/{{@key}}">
             <a href="#definitions/{{@key}}">{{@key}}</a>
         </h2>
 
-        <table class="table table-bordered">
-            <tr>
-                <th>name</th>
-                <th>type</th>
-                <th>required</th>
-                <th>description</th>
-                <th>example</th>
-            </tr>
-            {{#each this.properties}}
-                {{#if required}}
-                    shit
-                {{/if}}
+        <div class="table-responsive">
+            <table class="table table-bordered">
                 <tr>
-                    <td>{{@key}}</td>
-                    <td>
-                        {{type}}
-                        {{#ifCond type '==' "array"}}
-                            {{type}}[]
-                            {{#if ../items.$ref}}
-                                <a href="/{{../items.$ref}}">{{../items.$ref}}</a>
-                            {{/if}}
-                        {{else}}
-                            {{#if ../$ref}}
-                                <a href="/{{../$ref}}">{{../$ref}}</a>
-                            {{/if}}
-                            {{#if ../format}}
-                                ({{../format}})
-                            {{/if}}
-                        {{/ifCond}}
-                    </td>
-                    <td>
-                        {{#ifCond (includes ../required @key) '==' true}}
-                            required
-                        {{else}}
-                            optional
-                        {{/ifCond}}
-                    </td>
-                    <td>
-                        {{#if description}}
-                            {{{description}}}
-                        {{/if}}
-                    </td>
-                    <td>
-                        {{example}}
-                        {{#if enum}}
-                            {{enum}}
-                        {{/if}}    
-                    </td>
+                    <th>name</th>
+                    <th>type</th>
+                    <th>required</th>
+                    <th>description</th>
+                    <th>example</th>
                 </tr>
-            {{/each}}
-        </table>
+                {{#each this.properties}}
+                    {{#if required}}
+                        shit
+                    {{/if}}
+                    <tr>
+                        <td>{{@key}}</td>
+                        <td>
+                            {{type}}
+                            {{#ifCond type '==' "array"}}
+                                {{type}}[]
+                                {{#if ../items.$ref}}
+                                    <a href="/{{../items.$ref}}">{{../items.$ref}}</a>
+                                {{/if}}
+                            {{else}}
+                                {{#if ../$ref}}
+                                    <a href="/{{../$ref}}">{{../$ref}}</a>
+                                {{/if}}
+                                {{#if ../format}}
+                                    ({{../format}})
+                                {{/if}}
+                            {{/ifCond}}
+                        </td>
+                        <td>
+                            {{#ifCond (includes ../required @key) '==' true}}
+                                required
+                            {{else}}
+                                optional
+                            {{/ifCond}}
+                        </td>
+                        <td>
+                            {{#if description}}
+                                {{{description}}}
+                            {{/if}}
+                        </td>
+                        <td>
+                            {{example}}
+                            {{#if enum}}
+                                {{enum}}
+                            {{/if}}    
+                        </td>
+                    </tr>
+                {{/each}}
+            </table>
+        </div>
     </div>
     {{/each}}
 </div>
 {{/if}}
+</div>
