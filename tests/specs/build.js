@@ -202,6 +202,24 @@ template: some-template-path-doesnt-exist.hbs
     fs.unlinkSync(filepath);
 });
 
+test('Run build - Check custom data', async t => {
+    // Run build and clean
+    try{
+        await h.exec(`node ${h.rootPath}/cli.js build -c`);
+    }catch(ex){
+        console.log('Ex', ex);
+    }
+
+    // Check file exists
+    t.deepEqual(await h.exists(path.join(process.config.buildDir, 'api', 'index.html')), true);
+
+    // Read file
+    const fileContents = fs.readFileSync(path.join(process.config.buildDir, 'api', 'index.html'), 'utf-8');
+
+    // Check for contents
+    t.deepEqual(fileContents.includes('Swagger Petstore'), true);
+});
+
 test('Run build - postBuild zip', async t => {
     // Run build and clean
     try{

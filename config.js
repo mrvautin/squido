@@ -15,7 +15,7 @@ const config = {
         },
         data: [
             {
-                name: 'swagger-yaml',
+                name: 'swagger',
                 type: 'yaml',
                 file: 'swagger.yaml'
             },
