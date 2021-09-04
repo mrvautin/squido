@@ -171,14 +171,17 @@
                             <td> - </td>
                         {{#ifCond in '==' 'body'}}
                             <td>
-                            {{#ifCond schema.type '==' 'array'}}Array[<a href="{{../schema.items.$ref}}">{{basename schema.items.$ref}}</a>]{{/ifCond}}
-                            {{#schema.$ref}}<a href="{{schema.$ref}}">{{basename schema.$ref}}</a> {{/schema.$ref}}
+                            {{#ifCond ../schema.type '==' 'array'}}
+                                Array[<a href="{{../schema.items.$ref}}">{{../schema.items.$ref}}</a>]
+                            {{else}}
+                                <a href="{{../schema.$ref}}">{{../schema.$ref}}</a>
+                            {{/ifCond}}
                             </td>
                         {{else}}
-                            {{#ifCond type '==' 'array'}}
-                                    <td>Array[{{items.type}}] ({{collectionFormat}})</td>
+                            {{#ifCond ../type '==' 'array'}}
+                                <td>Array[{{../type}}] ({{../collectionFormat}})</td>
                             {{else}}
-                                    <td>{{type}} {{#format}}({{format}}){{/format}}</td>
+                                <td>{{../type}} {{#if ../format}}({{../format}}){{/if}}</td>
                             {{/ifCond}}
                         {{/ifCond}}
                         </tr>
@@ -214,7 +217,7 @@
                             <td>{{@key}}</td>
                             <td>{{description}}</td>
                             <td>
-                            {{#ifCond ../schema.type '==' 'array'}}
+                            {{#ifCond schema.type '==' 'array'}}
                                 Array[
                                     <a href="{{../schema.items.$ref}}">{{../schema.items.$ref}}</a>
                                 ]
@@ -239,7 +242,6 @@
                 <h2 id="definitions/{{@key}}">
                     <a href="#definitions/{{@key}}">{{@key}}</a>
                 </h2>
-
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <tr>
