@@ -1,5 +1,31 @@
 <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-3 d-none d-sm-block">
+        <ul class="list-group">
+            <li class="list-group-item">
+                <span class="h5">APIs</span>
+            </li>
+            {{#each data.swagger.paths}}
+            {{#with @key}}
+            {{#each ../this}}
+            <li class="list-group-item">
+                <span class="badge bg-secondary">{{@key}}</span>
+                &nbsp;&nbsp;<a href="#{{operationId}}">{{operationId}}</a>
+            </li>
+            {{/each}}
+            {{/with}}
+            {{/each}}
+            {{#if data.swagger.definitions}}
+            <li class="list-group-item"><span class="h5">Schemas</span></li>
+            {{#each data.swagger.definitions}}
+            <li class="list-group-item">
+                <span class="badge bg-secondary">Schema</span>
+                <a href="#definitions/{{@key}}">{{@key}}</a>
+            </li>
+            {{/each}}
+            {{/if}}
+        </ul>
+    </div>
+    <div class="col-sm-9">
         <h1>
             {{data.swagger.info.title}}
             <small class="text-muted">{{data.swagger.info.version}}</small>
@@ -297,4 +323,7 @@
         </div>
         {{/if}}
     </div>
+    <a class="top-link hide" href="" id="js-top">
+        <i class="lni lni-chevron-up-circle"></i>
+    </a>
 </div>

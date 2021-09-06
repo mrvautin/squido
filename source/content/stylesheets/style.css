@@ -69,6 +69,46 @@ main > .container {
     min-height: 100px;
 }
 
+.top-link {
+    transition: all 0.25s ease-in-out;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: inline-flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    margin: 0 3em 3em 0;
+    border-radius: 50%;
+    padding: 0.25em;
+    width: 80px;
+    height: 80px;
+    background-color: #F8F8F8;
+}
+
+.top-link.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+.top-link.hide {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.top-link i {
+    font-size: 30px
+}
+
+.top-link:hover {
+    background-color: #E8E8E8;
+}
+
+.top-link:hover i {
+    fill: #000000;
+    text-decoration: none;
+}
+
 .footer {
     position: absolute;
     bottom: 0;
