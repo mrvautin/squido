@@ -44,7 +44,8 @@
     "squido",
     "documentation",
     "handlebars",
-    "ejs"
+    "ejs",
+    "pug"
   ],
   "readmeFilename": "README.md",
   "author": "@mrvautin",
