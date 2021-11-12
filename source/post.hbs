@@ -26,8 +26,10 @@
             <div class="col-sm-12 col-md-6 col-xl-4">
                 <div class="card related-card">
                     <div class="card-body">
-                        <h5 class="card-title related-card-title">{{../this.title}}</h5>
-                        <a href="{{../this.url}}" class="btn btn-outline-secondary">Read more...</a>
+                        {{#with (lookup @root.related @index)}}
+                        <h5 class="card-title related-card-title">{{this.title}}</h5>
+                        <a href="/{{this.permalink}}" class="btn btn-outline-secondary">Read more...</a>
+                        {{/with}}
                     </div>
                 </div>
             </div>
