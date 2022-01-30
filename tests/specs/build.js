@@ -5,7 +5,7 @@ const path = require('path');
 const fs = require('fs');
 const glob = require('globby');
 const AdmZip = require('adm-zip');
-const { globPath } = require('../../lib/common');
+const { winPath } = require('../../lib/common');
 const { compilePosts } = require('../../lib/source');
 const h = require('../helper');
 
@@ -83,7 +83,7 @@ test('Run build - check for content', async t => {
 
     // Get content files
     const contentSourceFiles = await glob([
-        `${globPath(process.config.sourceDir)}/content/**/*`
+        `${winPath(process.config.sourceDir)}/content/**/*`
     ]);
 
     // Fix paths and check build file exists
@@ -233,8 +233,8 @@ test('Run build - postBuild zip', async t => {
 
     // Get all files in the build dir
     const buildFiles = await glob([
-        `${globPath(process.config.buildDir)}/**/*`,
-        `!${globPath(process.config.buildDir)}/build.zip`
+        `${winPath(process.config.buildDir)}/**/*`,
+        `!${winPath(process.config.buildDir)}/build.zip`
     ]);
 
     // Read our zip to get files
