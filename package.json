@@ -1,6 +1,6 @@
 {
   "name": "squido",
-  "version": "1.0.22",
+  "version": "1.0.23",
   "description": "A dead-simple static HTML website generator for super fast static websites which are easier to develop, more secure and dirt cheaper to host.",
   "bin": {
     "squido": "cli.js"
