@@ -130,7 +130,7 @@ program
                 const filedir = path.dirname(file);
 
                 // If a post, build
-                if(filedir === `${process.config.sourceDir}/posts`){
+                if(filedir.startsWith(`${process.config.sourceDir}/posts`)){
                     await indexPosts();
                     await buildPost(file);
                     return;

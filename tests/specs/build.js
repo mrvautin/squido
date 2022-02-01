@@ -73,6 +73,17 @@ test('Run build - check for a post', async t => {
     t.deepEqual(await h.exists(path.join(process.config.buildDir, postMeta.permalink, 'index.html')), true);
 });
 
+test('Run build - check for a post from a subsolder', async t => {
+    // Run build and clean
+    try{
+        await h.exec(`node ${h.rootPath}/cli.js build -c`);
+    }catch(ex){
+        console.log('Ex', ex);
+    }
+
+    t.deepEqual(await h.exists(path.join(process.config.buildDir, 'subfolder-post', 'index.html')), true);
+});
+
 test('Run build - check for content', async t => {
     // Run build and clean
     try{
