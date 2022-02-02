@@ -29,7 +29,7 @@
     {{/if}}
     {{/if}}
     <link rel="canonical" href="{{meta.url}}" />
-    <link rel="icon" type="image/png" href="/content/images/favicon.png" />
+    <link rel="icon" type="image/png" href="/{{config.contentDir}}/images/favicon.png" />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="{{meta.url}}" />
     <meta property="og:site_name" content="{{config.name}}" />
@@ -46,8 +46,8 @@
     <link rel="alternate" type="application/json" href="{{config.baseUrl}}/json" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta2/css/bootstrap.min.css" integrity="sha512-aqT9YD5gLuLBr6ipQAS+72o5yHKzgZbGxEh6iY8lW/r6gG14e2kBTAJb8XrxzZrMOgSmDqtLaF76T0Z6YY2IHg==" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.lineicons.com/3.0/lineicons.css"> 
-    <link rel="stylesheet" href="/content/stylesheets/style{{config.fileEnv}}.css">
-    <script src="/content/javascripts/site{{config.fileEnv}}.js"></script>
+    <link rel="stylesheet" href="/{{config.contentDir}}/stylesheets/style{{config.fileEnv}}.css">
+    <script src="/{{config.contentDir}}/javascripts/site{{config.fileEnv}}.js"></script>
   </head>
   <body>
     {{> header}}
