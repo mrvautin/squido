@@ -94,7 +94,7 @@ test('Run build - check for content', async t => {
 
     // Get content files
     const contentSourceFiles = await glob([
-        `${winPath(process.config.sourceDir)}/content/**/*`
+        `${winPath(process.config.sourceDir)}/${process.config.contentDir}/**`
     ]);
 
     // Fix paths and check build file exists
@@ -244,7 +244,7 @@ test('Run build - postBuild zip', async t => {
 
     // Get all files in the build dir
     const buildFiles = await glob([
-        `${winPath(process.config.buildDir)}/**/*`,
+        `${winPath(process.config.buildDir)}/**`,
         `!${winPath(process.config.buildDir)}/build.zip`
     ]);
 

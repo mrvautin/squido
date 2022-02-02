@@ -26,6 +26,7 @@ const config = {
             }
         ],
         sourceDir: 'source',
+        contentDir: 'content',
         buildDir: 'build',
         summaryLength: 250,
         port: 4965,
@@ -62,6 +63,7 @@ const config = {
         sourcesExt: 'markdown',
         templateEngine: 'hbs',
         sourceDir: 'source',
+        contentDir: 'content',
         buildDir: 'build',
         data: [
             {
@@ -88,6 +90,7 @@ const config = {
         baseUrl: 'http://example.com',
         sourcesExt: 'markdown',
         sourceDir: 'source',
+        contentDir: 'content',
         buildDir: 'build',
         summaryLength: 250,
         port: 4965,
