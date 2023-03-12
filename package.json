@@ -23,7 +23,7 @@
       "NODE_ENV": "test"
     }
   },
-  "homepage": "https://squido.org",
+  "homepage": "https://squido.markmoffat.com",
   "repository": {
     "type": "git",
     "url": "git://github.com/mrvautin/squido.git"

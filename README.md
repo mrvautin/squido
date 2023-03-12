@@ -23,12 +23,12 @@ yarn global add squido
 
 ## Documentation
 
-`squido` documentation can be found here: [https://docs.squido.org/](https://docs.squido.org/) (which also happens to be a `squido` website demo/example)
+`squido` documentation can be found here: [https://squido-docs.markmoffat.com/](https://squido-docs.markmoffat.com/) (which also happens to be a `squido` website demo/example)
 
 ## Homepage
 
-`squido` product page can be found here: [https://squido.org/](https://squido.org/)
+`squido` product page can be found here: [https://squido.markmoffat.com/](https://squido.markmoffat.com/)
 
 ## Demo Blog
 
-A demo can be found here: [https://blog.squido.org/](https://blog.squido.org/)
+A demo can be found here: [https://squido-blog.markmoffat.com/](https://squido-blog.markmoffat.com/)
