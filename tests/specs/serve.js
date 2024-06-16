@@ -13,6 +13,10 @@ test.before(async t => {
     app = await server.start();
 });
 
+test.after(async t => {
+    await app.close();
+});
+
 test('Run serve - Check index', async t => {
     // Run build and clean
     await h.exec(`node ${h.rootPath}/cli.js build -c`);

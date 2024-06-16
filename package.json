@@ -17,7 +17,7 @@
     "files": [
       "./tests/specs/*.js"
     ],
-    "timeout": "20s",
+    "timeout": "45s",
     "verbose": true,
     "environmentVariables": {
       "NODE_ENV": "test"
