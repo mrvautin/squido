@@ -10,15 +10,20 @@
 
 `squido` has baked in everything you need to run and host a website. You simply do the writing and customisation of style and layout. 
 
+
 ```bash
-# From Github (preferred for latest version)
-npm i -g https://github.com/mrvautin/squido.git
+# Running squido commands
+npx mrvautin/squido <command>
+```
 
-# From npm
-npm install -g squido
+`build` command:
+```bash
+npx mrvautin/squido build
+```
 
-# With Yarn
-yarn global add squido
+`serve` command with `watch`, `clean` and `build`:
+```bash
+npx mrvautin/squido serve -b -w -c
 ```
 
 ## Documentation
