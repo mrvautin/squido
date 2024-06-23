@@ -26,6 +26,8 @@ npx mrvautin/squido build
 npx mrvautin/squido serve -b -w -c
 ```
 
+> NOTE: You will need Nodejs version 18.x or greater.
+
 ## Documentation
 
 `squido` documentation can be found here: [https://squido-docs.markmoffat.com/](https://squido-docs.markmoffat.com/) (which also happens to be a `squido` website demo/example)
